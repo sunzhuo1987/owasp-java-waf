@@ -166,7 +166,8 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 
 		//Start the Poll Schedule 
 		pollTimer = new Timer();
-		pollTimer.schedule(new PolicyRefreshPoll(this), this.pollingTime, this.pollingTime);
+		File f = new File(configurationFilename);
+		pollTimer.schedule(new PolicyRefreshPoll(this, f.lastModified()), this.pollingTime, this.pollingTime);
 }
 
 	/*
@@ -456,16 +457,21 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 
 	private class PolicyRefreshPoll extends TimerTask {
 		private ESAPIWebApplicationFirewallFilter filterReferer;
-		
-		public PolicyRefreshPoll(ESAPIWebApplicationFirewallFilter filterReferer) {
+		private long lastConfigModifiedTime;
+		public PolicyRefreshPoll(ESAPIWebApplicationFirewallFilter filterReferer, long lastConfigModifiedTime) {
 			//Save reference to filter class for future call back
-			this.filterReferer = filterReferer; 
+			this.filterReferer = filterReferer;
+			this.lastConfigModifiedTime = lastConfigModifiedTime;
 		}
 		
 		public void run() {
 			try {
-				logger.debug("Success >> Re-reading WAF policy");
-				this.filterReferer.LoadConfig();
+				File f = new File(this.filterReferer.configurationFilename);
+				if (f.lastModified() != lastConfigModifiedTime) { 
+					logger.debug("Success >> Re-reading WAF policy");
+					this.filterReferer.LoadConfig();
+					lastConfigModifiedTime = f.lastModified();
+				}
 			} catch (ServletException e) {
 				logger.warn(e);
 			}

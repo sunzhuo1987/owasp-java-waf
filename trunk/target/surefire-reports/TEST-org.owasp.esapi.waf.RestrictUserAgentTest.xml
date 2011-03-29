@@ -1,106 +1,156 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.006" errors="1" skipped="0" tests="1" name="org.owasp.esapi.waf.RestrictUserAgentTest">
+<testsuite failures="1" time="0.066" errors="0" skipped="0" tests="2" name="org.owasp.esapi.waf.RestrictUserAgentTest">
   <properties>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="sun.boot.library.path" value="C:\Program Files\Java\jre6\bin"/>
-    <property name="java.vm.version" value="19.1-b02"/>
-    <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
-    <property name="java.vendor.url" value="http://java.sun.com/"/>
-    <property name="path.separator" value=";"/>
-    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
-    <property name="file.encoding.pkg" value="sun.io"/>
-    <property name="user.country" value="MX"/>
+    <property name="java.vendor" value="Sun Microsystems Inc."/>
+    <property name="env.SYSTEMROOT" value="C:\Windows"/>
+    <property name="localRepository" value="C:\Users\Juan Carlos\.m2\repository"/>
+    <property name="env.DEFLOGDIR" value="C:\ProgramData\McAfee\DesktopProtection"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="sun.os.patch.level" value="Service Pack 2"/>
-    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF"/>
-    <property name="java.runtime.version" value="1.6.0_24-b07"/>
-    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="basedir" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF"/>
-    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre6\lib\endorsed"/>
-    <property name="os.arch" value="x86"/>
-    <property name="surefire.real.class.path" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\surefire\surefirebooter2631793917809060463.jar"/>
-    <property name="java.io.tmpdir" value="C:\Users\JUANCA~1\AppData\Local\Temp\"/>
-    <property name="line.separator" value="
-"/>
-    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
-    <property name="user.variant" value=""/>
+    <property name="env.TRACE_FORMAT_SEARCH_PATH" value="\\NTREL202.ntdev.corp.microsoft.com\4F18C3A5-CA09-4DBD-B6FC-219FDD4C6BE0\TraceFormat"/>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
     <property name="os.name" value="Windows Vista"/>
+    <property name="env.FP_NO_HOST_CHECK" value="NO"/>
+    <property name="sun.boot.class.path" value="C:\Program Files\Java\jre6\lib\resources.jar;C:\Program Files\Java\jre6\lib\rt.jar;C:\Program Files\Java\jre6\lib\sunrsasign.jar;C:\Program Files\Java\jre6\lib\jsse.jar;C:\Program Files\Java\jre6\lib\jce.jar;C:\Program Files\Java\jre6\lib\charsets.jar;C:\Program Files\Java\jre6\lib\modules\jdk.boot.jar;C:\Program Files\Java\jre6\classes"/>
+    <property name="env.COMPUTERNAME" value="CALGAR2"/>
+    <property name="env.ALLUSERSPROFILE" value="C:\ProgramData"/>
+    <property name="env.GTK_BASEPATH" value="C:\Program Files\GtkSharp\2.12\"/>
+    <property name="sun.desktop" value="windows"/>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.runtime.version" value="1.6.0_24-b07"/>
+    <property name="env.HOMEPATH" value="\Users\Juan Carlos"/>
+    <property name="env.__COMPAT_LAYER" value="ElevateCreateProcess "/>
+    <property name="user.name" value="Juan Carlos"/>
+    <property name="env.QTJAVA" value="C:\Program Files\Java\jre6\lib\ext\QTJava.zip"/>
+    <property name="env.PATH" value="C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin/client;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Common Files\Roxio Shared\DLLShared\;C:\Program Files\Common Files\Roxio Shared\10.0\DLLShared\;C:\Program Files\ZipGenius 6\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\PHP;C:\Program Files\flex_sdk_3\bin;C:\cygwin\bin\;C:\Program Files\Common Files\DivX Shared\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Windows Live\Shared;C:\Program Files\GtkSharp\2.12\bin;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\Java\jdk1.6.0_13\bin"/>
+    <property name="user.language" value="es"/>
+    <property name="env.WINDIR" value="C:\Windows"/>
+    <property name="sun.boot.library.path" value="C:\Program Files\Java\jre6\bin"/>
+    <property name="classworlds.conf" value="C:\Users\Juan Carlos\workspace\.metadata\.plugins\org.maven.ide.eclipse\launches\m2conf2459090162575565396.tmp"/>
+    <property name="java.version" value="1.6.0_24"/>
+    <property name="env.PROCESSOR_IDENTIFIER" value="x86 Family 6 Model 15 Stepping 13, GenuineIntel"/>
+    <property name="user.timezone" value="America/Mexico_City"/>
+    <property name="env.TEMP" value="C:\Users\JUANCA~1\AppData\Local\Temp"/>
+    <property name="sun.arch.data.model" value="32"/>
+    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jre6\lib\endorsed"/>
+    <property name="env.VSEDEFLOGDIR" value="C:\ProgramData\McAfee\DesktopProtection"/>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+    <property name="env.HOMEDRIVE" value="C:"/>
     <property name="sun.jnu.encoding" value="Cp1252"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jre6\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin/client;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Common Files\Roxio Shared\DLLShared\;C:\Program Files\Common Files\Roxio Shared\10.0\DLLShared\;C:\Program Files\ZipGenius 6\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\PHP;C:\Program Files\flex_sdk_3\bin;C:\cygwin\bin\;C:\Program Files\Common Files\DivX Shared\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Windows Live\Shared;C:\Program Files\GtkSharp\2.12\bin;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\Java\jdk1.6.0_13\bin"/>
-    <property name="surefire.test.class.path" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes;C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\classes;C:\Users\Juan Carlos\.m2\repository\xom\xom\1.2.5\xom-1.2.5.jar;C:\Users\Juan Carlos\.m2\repository\xml-apis\xml-apis\1.3.03\xml-apis-1.3.03.jar;C:\Users\Juan Carlos\.m2\repository\xerces\xercesImpl\2.8.0\xercesImpl-2.8.0.jar;C:\Users\Juan Carlos\.m2\repository\xalan\xalan\2.7.0\xalan-2.7.0.jar;C:\Users\Juan Carlos\.m2\repository\org\beanshell\bsh-core\2.0b4\bsh-core-2.0b4.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\tomcat\servlet-api\6.0.32\servlet-api-6.0.32.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\tomcat\jsp-api\6.0.32\jsp-api-6.0.32.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\tomcat\el-api\6.0.32\el-api-6.0.32.jar;C:\Users\Juan Carlos\.m2\repository\log4j\log4j\1.2.14\log4j-1.2.14.jar;C:\Users\Juan Carlos\.m2\repository\commons-fileupload\commons-fileupload\1.2.2\commons-fileupload-1.2.2.jar;C:\Users\Juan Carlos\.m2\repository\org\owasp\esapi\esapi\2.0_rc10\esapi-2.0_rc10.jar;C:\Users\Juan Carlos\.m2\repository\commons-configuration\commons-configuration\1.5\commons-configuration-1.5.jar;C:\Users\Juan Carlos\.m2\repository\commons-lang\commons-lang\2.3\commons-lang-2.3.jar;C:\Users\Juan Carlos\.m2\repository\commons-logging\commons-logging\1.1\commons-logging-1.1.jar;C:\Users\Juan Carlos\.m2\repository\logkit\logkit\1.0.1\logkit-1.0.1.jar;C:\Users\Juan Carlos\.m2\repository\avalon-framework\avalon-framework\4.1.3\avalon-framework-4.1.3.jar;C:\Users\Juan Carlos\.m2\repository\javax\servlet\servlet-api\2.3\servlet-api-2.3.jar;C:\Users\Juan Carlos\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar;C:\Users\Juan Carlos\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar;C:\Users\Juan Carlos\.m2\repository\commons-beanutils\commons-beanutils-core\1.7.0\commons-beanutils-core-1.7.0.jar;C:\Users\Juan Carlos\.m2\repository\commons-collections\commons-collections\3.2\commons-collections-3.2.jar;C:\Users\Juan Carlos\.m2\repository\org\owasp\antisamy\1.4\antisamy-1.4.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\xmlgraphics\batik-css\1.7\batik-css-1.7.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\xmlgraphics\batik-ext\1.7\batik-ext-1.7.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\xmlgraphics\batik-util\1.7\batik-util-1.7.jar;C:\Users\Juan Carlos\.m2\repository\xml-apis\xml-apis-ext\1.3.04\xml-apis-ext-1.3.04.jar;C:\Users\Juan Carlos\.m2\repository\net\sourceforge\nekohtml\nekohtml\1.9.12\nekohtml-1.9.12.jar;C:\Users\Juan Carlos\.m2\repository\commons-httpclient\commons-httpclient\3.1\commons-httpclient-3.1.jar;C:\Users\Juan Carlos\.m2\repository\commons-codec\commons-codec\1.2\commons-codec-1.2.jar;C:\Users\Juan Carlos\.m2\repository\junit\junit\4.8.2\junit-4.8.2.jar;"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="env.SYSTEMDRIVE" value="C:"/>
+    <property name="file.separator" value="\"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="50.0"/>
-    <property name="sun.management.compiler" value="HotSpot Client Compiler"/>
-    <property name="os.version" value="6.0"/>
-    <property name="user.home" value="C:\Users\Juan Carlos"/>
-    <property name="user.timezone" value=""/>
-    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
-    <property name="java.specification.version" value="1.6"/>
-    <property name="file.encoding" value="Cp1252"/>
-    <property name="user.name" value="Juan Carlos"/>
-    <property name="java.class.path" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes;C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\classes;C:\Users\Juan Carlos\.m2\repository\xom\xom\1.2.5\xom-1.2.5.jar;C:\Users\Juan Carlos\.m2\repository\xml-apis\xml-apis\1.3.03\xml-apis-1.3.03.jar;C:\Users\Juan Carlos\.m2\repository\xerces\xercesImpl\2.8.0\xercesImpl-2.8.0.jar;C:\Users\Juan Carlos\.m2\repository\xalan\xalan\2.7.0\xalan-2.7.0.jar;C:\Users\Juan Carlos\.m2\repository\org\beanshell\bsh-core\2.0b4\bsh-core-2.0b4.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\tomcat\servlet-api\6.0.32\servlet-api-6.0.32.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\tomcat\jsp-api\6.0.32\jsp-api-6.0.32.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\tomcat\el-api\6.0.32\el-api-6.0.32.jar;C:\Users\Juan Carlos\.m2\repository\log4j\log4j\1.2.14\log4j-1.2.14.jar;C:\Users\Juan Carlos\.m2\repository\commons-fileupload\commons-fileupload\1.2.2\commons-fileupload-1.2.2.jar;C:\Users\Juan Carlos\.m2\repository\org\owasp\esapi\esapi\2.0_rc10\esapi-2.0_rc10.jar;C:\Users\Juan Carlos\.m2\repository\commons-configuration\commons-configuration\1.5\commons-configuration-1.5.jar;C:\Users\Juan Carlos\.m2\repository\commons-lang\commons-lang\2.3\commons-lang-2.3.jar;C:\Users\Juan Carlos\.m2\repository\commons-logging\commons-logging\1.1\commons-logging-1.1.jar;C:\Users\Juan Carlos\.m2\repository\logkit\logkit\1.0.1\logkit-1.0.1.jar;C:\Users\Juan Carlos\.m2\repository\avalon-framework\avalon-framework\4.1.3\avalon-framework-4.1.3.jar;C:\Users\Juan Carlos\.m2\repository\javax\servlet\servlet-api\2.3\servlet-api-2.3.jar;C:\Users\Juan Carlos\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar;C:\Users\Juan Carlos\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar;C:\Users\Juan Carlos\.m2\repository\commons-beanutils\commons-beanutils-core\1.7.0\commons-beanutils-core-1.7.0.jar;C:\Users\Juan Carlos\.m2\repository\commons-collections\commons-collections\3.2\commons-collections-3.2.jar;C:\Users\Juan Carlos\.m2\repository\org\owasp\antisamy\1.4\antisamy-1.4.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\xmlgraphics\batik-css\1.7\batik-css-1.7.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\xmlgraphics\batik-ext\1.7\batik-ext-1.7.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\xmlgraphics\batik-util\1.7\batik-util-1.7.jar;C:\Users\Juan Carlos\.m2\repository\xml-apis\xml-apis-ext\1.3.04\xml-apis-ext-1.3.04.jar;C:\Users\Juan Carlos\.m2\repository\net\sourceforge\nekohtml\nekohtml\1.9.12\nekohtml-1.9.12.jar;C:\Users\Juan Carlos\.m2\repository\commons-httpclient\commons-httpclient\3.1\commons-httpclient-3.1.jar;C:\Users\Juan Carlos\.m2\repository\commons-codec\commons-codec\1.2\commons-codec-1.2.jar;C:\Users\Juan Carlos\.m2\repository\junit\junit\4.8.2\junit-4.8.2.jar;"/>
-    <property name="java.vm.specification.version" value="1.0"/>
-    <property name="sun.arch.data.model" value="32"/>
+    <property name="user.country" value="MX"/>
     <property name="java.home" value="C:\Program Files\Java\jre6"/>
-    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
-    <property name="user.language" value="es"/>
-    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="env.APPDATA" value="C:\Users\Juan Carlos\AppData\Roaming"/>
+    <property name="env.PUBLIC" value="C:\Users\Public"/>
     <property name="java.vm.info" value="mixed mode, sharing"/>
-    <property name="java.version" value="1.6.0_24"/>
-    <property name="java.ext.dirs" value="C:\Program Files\Java\jre6\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
-    <property name="sun.boot.class.path" value="C:\Program Files\Java\jre6\lib\resources.jar;C:\Program Files\Java\jre6\lib\rt.jar;C:\Program Files\Java\jre6\lib\sunrsasign.jar;C:\Program Files\Java\jre6\lib\jsse.jar;C:\Program Files\Java\jre6\lib\jce.jar;C:\Program Files\Java\jre6\lib\charsets.jar;C:\Program Files\Java\jre6\lib\modules\jdk.boot.jar;C:\Program Files\Java\jre6\classes"/>
-    <property name="java.vendor" value="Sun Microsystems Inc."/>
-    <property name="localRepository" value="C:\Users\Juan Carlos\.m2\repository"/>
-    <property name="file.separator" value="\"/>
-    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
-    <property name="sun.cpu.endian" value="little"/>
+    <property name="env.OS" value="Windows_NT"/>
+    <property name="os.version" value="6.0"/>
+    <property name="env.=::" value="::\"/>
+    <property name="path.separator" value=";"/>
+    <property name="java.vm.version" value="19.1-b02"/>
+    <property name="env.ASL.LOG" value="Destination=file;OnFirstLog=command,environment"/>
+    <property name="env.USERPROFILE" value="C:\Users\Juan Carlos"/>
+    <property name="user.variant" value=""/>
+    <property name="env.JAVA_HOME" value="C:\Program Files\Java\jdk1.6.0_13"/>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
+    <property name="env.TMP" value="C:\Users\JUANCA~1\AppData\Local\Temp"/>
+    <property name="env.PROGRAMFILES" value="C:\Program Files"/>
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-    <property name="sun.desktop" value="windows"/>
-    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="user.home" value="C:\Users\Juan Carlos"/>
+    <property name="env.COMMONPROGRAMFILES" value="C:\Program Files\Common Files"/>
+    <property name="env.SESSIONNAME" value="Console"/>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."/>
+    <property name="env.CLASSPATH" value=".;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\zeus.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\gnu-regexp.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\icu4j.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\sl.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\jaxb-rt-1.0-ea.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\jaxb-xjc-1.0-ea.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\xerces.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\jade.jar;C:\Program Files\Java\jre6\lib\ext\QTJava.zip"/>
+    <property name="env.VS80COMNTOOLS" value="C:\Program Files\Microsoft Visual Studio 8\Common7\Tools\"/>
+    <property name="env.NUMBER_OF_PROCESSORS" value="2"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jre6\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin/client;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Common Files\Roxio Shared\DLLShared\;C:\Program Files\Common Files\Roxio Shared\10.0\DLLShared\;C:\Program Files\ZipGenius 6\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\PHP;C:\Program Files\flex_sdk_3\bin;C:\cygwin\bin\;C:\Program Files\Common Files\DivX Shared\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Windows Live\Shared;C:\Program Files\GtkSharp\2.12\bin;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\Java\jdk1.6.0_13\bin"/>
+    <property name="java.vendor.url" value="http://java.sun.com/"/>
+    <property name="env.PSMODULEPATH" value="C:\Windows\system32\WindowsPowerShell\v1.0\Modules\"/>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="maven.home" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\EMBEDDED"/>
+    <property name="java.class.path" value="/C:/Program Files/eclipse/plugins/org.maven.ide.eclipse.maven_embedder_0.12.1.20110112-1712/jars/plexus-classworlds-2.4.jar"/>
+    <property name="env.DFSTRACINGON" value="FALSE"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="env.ROXIOCENTRAL" value="C:\Program Files\Common Files\Roxio Shared\10.0\Roxio Central36\"/>
+    <property name="env.LOGONSERVER" value="\\CALGAR2"/>
+    <property name="java.vm.specification.version" value="1.0"/>
+    <property name="env.PROCESSOR_ARCHITECTURE" value="x86"/>
+    <property name="sun.os.patch.level" value="Service Pack 2"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="surefire.test.class.path" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes;C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\classes;C:\Users\Juan Carlos\.m2\repository\xom\xom\1.2.5\xom-1.2.5.jar;C:\Users\Juan Carlos\.m2\repository\xml-apis\xml-apis\1.3.03\xml-apis-1.3.03.jar;C:\Users\Juan Carlos\.m2\repository\xerces\xercesImpl\2.8.0\xercesImpl-2.8.0.jar;C:\Users\Juan Carlos\.m2\repository\xalan\xalan\2.7.0\xalan-2.7.0.jar;C:\Users\Juan Carlos\.m2\repository\org\beanshell\bsh-core\2.0b4\bsh-core-2.0b4.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\tomcat\servlet-api\6.0.32\servlet-api-6.0.32.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\tomcat\jsp-api\6.0.32\jsp-api-6.0.32.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\tomcat\el-api\6.0.32\el-api-6.0.32.jar;C:\Users\Juan Carlos\.m2\repository\log4j\log4j\1.2.14\log4j-1.2.14.jar;C:\Users\Juan Carlos\.m2\repository\commons-fileupload\commons-fileupload\1.2.2\commons-fileupload-1.2.2.jar;C:\Users\Juan Carlos\.m2\repository\org\owasp\esapi\esapi\2.0_rc10\esapi-2.0_rc10.jar;C:\Users\Juan Carlos\.m2\repository\commons-configuration\commons-configuration\1.5\commons-configuration-1.5.jar;C:\Users\Juan Carlos\.m2\repository\commons-lang\commons-lang\2.3\commons-lang-2.3.jar;C:\Users\Juan Carlos\.m2\repository\commons-logging\commons-logging\1.1\commons-logging-1.1.jar;C:\Users\Juan Carlos\.m2\repository\logkit\logkit\1.0.1\logkit-1.0.1.jar;C:\Users\Juan Carlos\.m2\repository\avalon-framework\avalon-framework\4.1.3\avalon-framework-4.1.3.jar;C:\Users\Juan Carlos\.m2\repository\javax\servlet\servlet-api\2.3\servlet-api-2.3.jar;C:\Users\Juan Carlos\.m2\repository\commons-digester\commons-digester\1.8\commons-digester-1.8.jar;C:\Users\Juan Carlos\.m2\repository\commons-beanutils\commons-beanutils\1.7.0\commons-beanutils-1.7.0.jar;C:\Users\Juan Carlos\.m2\repository\commons-beanutils\commons-beanutils-core\1.7.0\commons-beanutils-core-1.7.0.jar;C:\Users\Juan Carlos\.m2\repository\commons-collections\commons-collections\3.2\commons-collections-3.2.jar;C:\Users\Juan Carlos\.m2\repository\org\owasp\antisamy\1.4\antisamy-1.4.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\xmlgraphics\batik-css\1.7\batik-css-1.7.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\xmlgraphics\batik-ext\1.7\batik-ext-1.7.jar;C:\Users\Juan Carlos\.m2\repository\org\apache\xmlgraphics\batik-util\1.7\batik-util-1.7.jar;C:\Users\Juan Carlos\.m2\repository\xml-apis\xml-apis-ext\1.3.04\xml-apis-ext-1.3.04.jar;C:\Users\Juan Carlos\.m2\repository\net\sourceforge\nekohtml\nekohtml\1.9.12\nekohtml-1.9.12.jar;C:\Users\Juan Carlos\.m2\repository\commons-httpclient\commons-httpclient\3.1\commons-httpclient-3.1.jar;C:\Users\Juan Carlos\.m2\repository\commons-codec\commons-codec\1.2\commons-codec-1.2.jar;C:\Users\Juan Carlos\.m2\repository\junit\junit\4.8.2\junit-4.8.2.jar;"/>
+    <property name="java.io.tmpdir" value="C:\Users\JUANCA~1\AppData\Local\Temp\"/>
+    <property name="env.PROCESSOR_REVISION" value="0f0d"/>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"/>
+    <property name="env.COMSPEC" value="C:\Windows\system32\cmd.exe"/>
+    <property name="env.PROGRAMDATA" value="C:\ProgramData"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
+    <property name="os.arch" value="x86"/>
+    <property name="java.ext.dirs" value="C:\Program Files\Java\jre6\lib\ext;C:\Windows\Sun\Java\lib\ext"/>
+    <property name="user.dir" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF"/>
+    <property name="env.LOCALAPPDATA" value="C:\Users\Juan Carlos\AppData\Local"/>
+    <property name="line.separator" value="
+"/>
+    <property name="org.owasp.esapi.resources" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
+    <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC"/>
+    <property name="basedir" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF"/>
+    <property name="env.USERNAME" value="Juan Carlos"/>
+    <property name="file.encoding" value="Cp1252"/>
+    <property name="env.USERDOMAIN" value="CALGAR2"/>
+    <property name="java.specification.version" value="1.6"/>
+    <property name="env.PROCESSOR_LEVEL" value="6"/>
   </properties>
-  <testcase time="0.002" classname="org.owasp.esapi.waf.RestrictUserAgentTest" name="initializationError">
-    <error message="org/owasp/esapi/http/MockHttpServletRequest" type="java.lang.NoClassDefFoundError">java.lang.NoClassDefFoundError: org/owasp/esapi/http/MockHttpServletRequest
-	at java.lang.Class.getDeclaredMethods0(Native Method)
-	at java.lang.Class.privateGetDeclaredMethods(Unknown Source)
-	at java.lang.Class.getDeclaredMethods(Unknown Source)
-	at junit.framework.TestSuite.addTestsFromTestCase(TestSuite.java:149)
-	at junit.framework.TestSuite.&lt;init&gt;(TestSuite.java:129)
-	at org.owasp.esapi.waf.RestrictUserAgentTest.suite(RestrictUserAgentTest.java:25)
+  <testcase time="0.018" classname="org.owasp.esapi.waf.RestrictUserAgentTest" name="testBadUserAgent">
+    <failure type="java.lang.AssertionError">java.lang.AssertionError
+	at org.owasp.esapi.waf.RestrictUserAgentTest.testBadUserAgent(RestrictUserAgentTest.java:34)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.junit.internal.runners.SuiteMethod.testFromSuiteMethod(SuiteMethod.java:34)
-	at org.junit.internal.runners.SuiteMethod.&lt;init&gt;(SuiteMethod.java:23)
-	at org.junit.internal.builders.SuiteMethodBuilder.runnerForClass(SuiteMethodBuilder.java:14)
-	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
-	at org.junit.internal.builders.AllDefaultPossibilitiesBuilder.runnerForClass(AllDefaultPossibilitiesBuilder.java:29)
-	at org.junit.runners.model.RunnerBuilder.safeRunnerForClass(RunnerBuilder.java:57)
-	at org.junit.internal.requests.ClassRequest.getRunner(ClassRequest.java:24)
-	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:33)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.executeTestSet(JUnit4Provider.java:146)
-	at org.apache.maven.surefire.junit4.JUnit4Provider.invoke(JUnit4Provider.java:97)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 	at java.lang.reflect.Method.invoke(Unknown Source)
-	at org.apache.maven.surefire.booter.ProviderFactory$ClassLoaderProxy.invoke(ProviderFactory.java:103)
-	at $Proxy0.invoke(Unknown Source)
-	at org.apache.maven.surefire.booter.SurefireStarter.invokeProvider(SurefireStarter.java:145)
-	at org.apache.maven.surefire.booter.SurefireStarter.runSuitesInProcess(SurefireStarter.java:87)
-	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:69)
-Caused by: java.lang.ClassNotFoundException: org.owasp.esapi.http.MockHttpServletRequest
-	at java.net.URLClassLoader$1.run(Unknown Source)
-	at java.security.AccessController.doPrivileged(Native Method)
-	at java.net.URLClassLoader.findClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	at sun.misc.Launcher$AppClassLoader.loadClass(Unknown Source)
-	at java.lang.ClassLoader.loadClass(Unknown Source)
-	... 29 more
-</error>
-    <system-out>@SLTests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.012 sec &lt;&lt;&lt; FAILURE!
-@SLRunning org.owasp.esapi.waf.RestrictUserAgentTest
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
+</failure>
+    <system-out>Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+DEBUG Success &gt;&gt; Using log4j xml configuration file
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Attempting to load waf-policies/restrict-user-agent-policy.xml via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi\waf-policies\restrict-user-agent-policy.xml
+DEBUG Success &gt;&gt;In WAF doFilter
+DEBUG Success &gt;&gt; Starting stage 1
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictUserAgentRule
+INFO  29.03.2011.04:49:40:538,[IP=64.14.103.52,Rule=RestrictUserAgentRule,ID=(no rule ID)] Disallowed user agent pattern &apos;.*GoogleBot.*&apos; found in user agent &apos;GoogleBot&apos;
 </system-out>
+    <system-err>log4j:WARN Continuable parsing error 46 and column 72
+log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
+log4j:WARN Continuable parsing error 48 and column 23
+log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
+</system-err>
   </testcase>
+  <testcase time="0.042" classname="org.owasp.esapi.waf.RestrictUserAgentTest" name="testGoodUserAgent"/>
 </testsuite>
