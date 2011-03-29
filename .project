@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>MyWAF</name>
+	<name>ESAPIWAF2.0</name>
 	<comment>The Enterprise Security API project is an OWASP project
 		to create simple strong security controls for every web platform.
 		Security controls are not simple to build. You can read about the
