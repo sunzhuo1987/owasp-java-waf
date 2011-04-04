@@ -19,6 +19,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -26,6 +28,7 @@ import java.util.TimerTask;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -243,9 +246,9 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 					return;
 
 				} else if ( action instanceof RedirectAction ) {
-					HttpSession httpSession = httpRequest.getSession();
-					httpSession.setAttribute("ESAPIWAF_LastBrokenRule", rule);
-					sendRedirect(response, httpResponse, ((RedirectAction)action).getRedirectURL()); 
+					//HttpSession httpSession = httpRequest.getSession();
+					httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
+					sendRedirect(httpRequest, response, httpResponse, ((RedirectAction)action).getRedirectURL()); 
 					return;
 
 				} else if ( action instanceof DefaultAction ) {				
@@ -259,9 +262,9 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 							return;
 							
 						case AppGuardianConfiguration.REDIRECT:
-							HttpSession httpSession = httpRequest.getSession();
-							httpSession.setAttribute("ESAPIWAF_LastBrokenRule", rule);
-							sendRedirect(response, httpResponse);
+							//HttpSession httpSession = httpRequest.getSession();
+							httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
+							sendRedirect(httpRequest, response, httpResponse, appGuardConfig.getDefaultErrorPage());
 							return;
 					}
 				}
@@ -307,9 +310,9 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 					return;
 
 				} else if ( action instanceof RedirectAction ) {
-					HttpSession httpSession = httpRequest.getSession();
-					httpSession.setAttribute("ESAPIWAF_LastBrokenRule", rule);
-					sendRedirect(response, httpResponse, ((RedirectAction)action).getRedirectURL()); 
+					//HttpSession httpSession = httpRequest.getSession();
+					httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
+					sendRedirect(httpRequest, response, httpResponse, ((RedirectAction)action).getRedirectURL()); 
 					return;
 
 				} else if ( action instanceof DefaultAction ) {				
@@ -323,9 +326,9 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 							return;
 							
 						case AppGuardianConfiguration.REDIRECT:
-							HttpSession httpSession = httpRequest.getSession();
-							httpSession.setAttribute("ESAPIWAF_LastBrokenRule", rule);
-							sendRedirect(response, httpResponse);
+							//HttpSession httpSession = httpRequest.getSession();
+							httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
+							sendRedirect(httpRequest, response, httpResponse, appGuardConfig.getDefaultErrorPage());
 							return;
 					}
 				}
@@ -367,9 +370,9 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 					return;
 
 				} else if ( action instanceof RedirectAction ) {
-					HttpSession httpSession = httpRequest.getSession();
-					httpSession.setAttribute("ESAPIWAF_LastBrokenRule", rule);
-					sendRedirect(response, httpResponse, ((RedirectAction)action).getRedirectURL()); 
+					//HttpSession httpSession = httpRequest.getSession();
+					httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
+					sendRedirect(httpRequest, response, httpResponse, ((RedirectAction)action).getRedirectURL()); 
 					return;
 
 				} else if ( action instanceof DefaultAction ) {				
@@ -383,9 +386,9 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 							return;
 							
 						case AppGuardianConfiguration.REDIRECT:
-							HttpSession httpSession = httpRequest.getSession();
-							httpSession.setAttribute("ESAPIWAF_LastBrokenRule", rule);
-							sendRedirect(response, httpResponse);
+							//HttpSession httpSession = httpRequest.getSession();
+							httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
+							sendRedirect(httpRequest, response, httpResponse, appGuardConfig.getDefaultErrorPage());
 							return;
 					}
 				}
@@ -406,16 +409,23 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 	/*
 	 * Utility method to send HTTP redirects that automatically determines which response class to use.
 	 */
-	private void sendRedirect(InterceptingHTTPServletResponse response,
-			HttpServletResponse httpResponse, String redirectURL) throws IOException {
+	private void sendRedirect(HttpServletRequest request, InterceptingHTTPServletResponse response,
+			HttpServletResponse httpResponse, String redirectURL) throws IOException, ServletException {
 		
+		ServletContext sc = request.getSession().getServletContext();
+		String FWPath = redirectURL;
+		if (FWPath.startsWith(sc.getContextPath())) {
+			FWPath = FWPath.substring(sc.getContextPath().length());
+		}
 		if ( response != null ) { // if we've been buffering everything we clean it all out before sending back.
 			response.reset();
 			response.resetBuffer();
-			response.sendRedirect(redirectURL);
+			sc.getRequestDispatcher(FWPath).forward(request, response);
+			//response.sendRedirect(redirectURL);
 			response.commit();
 		} else {
-			httpResponse.sendRedirect(redirectURL);
+			//httpResponse.sendRedirect(redirectURL);
+			sc.getRequestDispatcher(FWPath).forward(request, httpResponse);
 		}
 		
 	}
@@ -426,19 +436,20 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 	}
 
 	
-	private void sendRedirect(InterceptingHTTPServletResponse response, HttpServletResponse httpResponse) throws IOException {
+	/*[JC Calderon] To avoid duplication, I commented this function out, as function above provides the same functionality */
+	/*private void sendRedirect(InterceptingHTTPServletResponse response, HttpServletResponse httpResponse) throws IOException {
         /* [chrisisbeef] - commented out as this is not currently used. Minor performance tweak.
 		String finalJavaScript = AppGuardianConfiguration.JAVASCRIPT_REDIRECT;
 		finalJavaScript = finalJavaScript.replaceAll(AppGuardianConfiguration.JAVASCRIPT_TARGET_TOKEN, appGuardConfig.getDefaultErrorPage());
         */
-
+		/*
 		if ( response != null ) {
 			response.reset();
 			response.resetBuffer();
 			/*
 			response.setStatus(appGuardConfig.getDefaultResponseCode());
 			response.getOutputStream().write(finalJavaScript.getBytes());
-			*/
+			*//*
 			response.sendRedirect(appGuardConfig.getDefaultErrorPage());
 			
 		} else {
@@ -449,11 +460,11 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 				 * Can't send redirect because response is already committed. I'm not sure 
 				 * how this could happen, but I didn't want to cause IOExceptions in case
 				 * if it ever does. 
-				 */
+				 *//*
 			}
 			
 		}
-	}	
+	}	*/
 
 	private class PolicyRefreshPoll extends TimerTask {
 		private ESAPIWebApplicationFirewallFilter filterReferer;

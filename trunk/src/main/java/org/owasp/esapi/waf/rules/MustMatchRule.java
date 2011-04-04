@@ -194,7 +194,7 @@ public class MustMatchRule extends Rule {
 						if (s==null ) {
 							log(request, "MustMatch rule failed (input variable does not exist or is null)");
 							return this.ruleDefaultAction;
-						}else if ( RuleUtil.testValue(s, value, operator) ) {
+						}else if ( !RuleUtil.testValue(s, value, operator) ) {
 							log(request, "MustMatch rule failed (operator="+operator+"), value='" + value + "', input='" + s + "', header='"+target+"'");
 							return this.ruleDefaultAction;
 						}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="2" time="4.424" errors="0" skipped="0" tests="28" name="org.owasp.esapi.waf.WAFFilterTest">
+<testsuite failures="0" time="3.148" errors="9" skipped="0" tests="28" name="org.owasp.esapi.waf.WAFFilterTest">
   <properties>
     <property name="java.vendor" value="Sun Microsystems Inc."/>
     <property name="env.SYSTEMROOT" value="C:\Windows"/>
@@ -25,7 +25,7 @@
     <property name="user.language" value="es"/>
     <property name="env.WINDIR" value="C:\Windows"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jre6\bin"/>
-    <property name="classworlds.conf" value="C:\Users\Juan Carlos\workspace\.metadata\.plugins\org.maven.ide.eclipse\launches\m2conf2459090162575565396.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\Juan Carlos\workspace\.metadata\.plugins\org.maven.ide.eclipse\launches\m2conf9010065237079187278.tmp"/>
     <property name="java.version" value="1.6.0_24"/>
     <property name="env.PROCESSOR_IDENTIFIER" value="x86 Family 6 Model 15 Stepping 13, GenuineIntel"/>
     <property name="user.timezone" value="America/Mexico_City"/>
@@ -105,29 +105,17 @@
     <property name="java.specification.version" value="1.6"/>
     <property name="env.PROCESSOR_LEVEL" value="6"/>
   </properties>
-  <testcase time="1.616" classname="org.owasp.esapi.waf.WAFFilterTest" name="testConfigurationCanBeRead"/>
-  <testcase time="0.84" classname="org.owasp.esapi.waf.AddHeaderTest" name="testShouldAddHeader"/>
-  <testcase time="0.053" classname="org.owasp.esapi.waf.AddHeaderTest" name="testShouldNotAddHeader"/>
-  <testcase time="0.309" classname="org.owasp.esapi.waf.BeanShellTest" name="testRedirectBeanShellRule"/>
-  <testcase time="0.075" classname="org.owasp.esapi.waf.DetectOutboundTest" name="testBadDetectOutbound"/>
-  <testcase time="0.041" classname="org.owasp.esapi.waf.DetectOutboundTest" name="testGoodDetectOutbound"/>
-  <testcase time="0.062" classname="org.owasp.esapi.waf.EnforceAuthenticationTest" name="testAuthenticatedRequest"/>
-  <testcase time="0.041" classname="org.owasp.esapi.waf.EnforceAuthenticationTest" name="testUnauthenticatedRequest"/>
-  <testcase time="0.078" classname="org.owasp.esapi.waf.EnforceHTTPSTest" name="testGoodSchemeSSLRequired"/>
-  <testcase time="0.074" classname="org.owasp.esapi.waf.EnforceHTTPSTest" name="testBadSchemeSSLNotRequired"/>
-  <testcase time="0.071" classname="org.owasp.esapi.waf.EnforceHTTPSTest" name="testBadSchemeSSLRequired"/>
-  <testcase time="0.048" classname="org.owasp.esapi.waf.GoodRequestTest" name="testGoodRequest"/>
-  <testcase time="0.055" classname="org.owasp.esapi.waf.HttpOnlyTest" name="testAddHttpOnlyOnCustomCookie"/>
-  <testcase time="0.036" classname="org.owasp.esapi.waf.MustMatchTest" name="testUnauthorizedRequest"/>
-  <testcase time="0.061" classname="org.owasp.esapi.waf.MustMatchTest" name="testAuthorizedRequest">
-    <failure message="expected:&lt;200&gt; but was:&lt;301&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;200&gt; but was:&lt;301&gt;
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.failNotEquals(Assert.java:283)
-	at junit.framework.Assert.assertEquals(Assert.java:64)
-	at junit.framework.Assert.assertEquals(Assert.java:195)
-	at junit.framework.Assert.assertEquals(Assert.java:201)
-	at org.owasp.esapi.waf.WAFTestCase.createAndExecuteWAFResponseCodeTest(WAFTestCase.java:59)
-	at org.owasp.esapi.waf.MustMatchTest.testAuthorizedRequest(MustMatchTest.java:53)
+  <testcase time="1.044" classname="org.owasp.esapi.waf.WAFFilterTest" name="testConfigurationCanBeRead"/>
+  <testcase time="0.551" classname="org.owasp.esapi.waf.AddHeaderTest" name="testShouldAddHeader"/>
+  <testcase time="0.042" classname="org.owasp.esapi.waf.AddHeaderTest" name="testShouldNotAddHeader"/>
+  <testcase time="0.293" classname="org.owasp.esapi.waf.BeanShellTest" name="testRedirectBeanShellRule">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:251)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:68)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:88)
+	at org.owasp.esapi.waf.BeanShellTest.testRedirectBeanShellRule(BeanShellTest.java:38)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -153,7 +141,121 @@
 	at java.lang.reflect.Method.invoke(Unknown Source)
 	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
 	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
-</failure>
+</error>
+    <system-out>Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+DEBUG Success &gt;&gt; Using log4j xml configuration file
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Attempting to load waf-policies/bean-shell-policy.xml via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi\waf-policies\bean-shell-policy.xml
+DEBUG Success &gt;&gt;In WAF doFilter
+DEBUG Success &gt;&gt; Starting stage 1
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.BeanShellRule
+</system-out>
+    <system-err>log4j:WARN Continuable parsing error 46 and column 72
+log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
+log4j:WARN Continuable parsing error 48 and column 23
+log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
+</system-err>
+  </testcase>
+  <testcase time="0.062" classname="org.owasp.esapi.waf.DetectOutboundTest" name="testBadDetectOutbound">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:391)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:61)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:78)
+	at org.owasp.esapi.waf.DetectOutboundTest.testBadDetectOutbound(DetectOutboundTest.java:43)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
+</error>
+    <system-out>Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+DEBUG Success &gt;&gt; Using log4j xml configuration file
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+detectOutboundPolicy - Fires if response has &quot;2008&quot; in it
+Attempting to load waf-policies/detect-outbound-policy.xml via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi\waf-policies\detect-outbound-policy.xml
+DEBUG Success &gt;&gt;In WAF doFilter
+DEBUG Success &gt;&gt; Starting stage 1
+DEBUG Success &gt;&gt; Starting Stage 2
+DEBUG Success &gt;&gt; Calling the FilterChain: org.owasp.esapi.http.MockFilterChain@10e790c
+CHAIN received org.owasp.esapi.waf.internal.InterceptingHTTPServletRequest and is issuing org.owasp.esapi.waf.internal.InterceptingHTTPServletResponse
+DEBUG Success &gt;&gt; Starting Stage 3
+DEBUG Success &gt;&gt; Applying AFTER CHAIN rule:  org.owasp.esapi.waf.rules.DetectOutboundContentRule
+INFO  04.04.2011.13:18:55:513,[IP=64.14.103.52,Rule=DetectOutboundContentRule,ID=(no rule ID)] Content pattern &apos;.*2008.*&apos; was found in response to URL: &apos;http://www.example.com/here_is_the_2008?pid=1&amp;qid=test&apos;
+</system-out>
+    <system-err>log4j:WARN Continuable parsing error 46 and column 72
+log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
+log4j:WARN Continuable parsing error 48 and column 23
+log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
+</system-err>
+  </testcase>
+  <testcase time="0.041" classname="org.owasp.esapi.waf.DetectOutboundTest" name="testGoodDetectOutbound"/>
+  <testcase time="0.051" classname="org.owasp.esapi.waf.EnforceAuthenticationTest" name="testAuthenticatedRequest"/>
+  <testcase time="0.059" classname="org.owasp.esapi.waf.EnforceAuthenticationTest" name="testUnauthenticatedRequest">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:61)
+	at org.owasp.esapi.waf.WAFTestCase.createAndExecuteWAFResponseCodeTest(WAFTestCase.java:59)
+	at org.owasp.esapi.waf.EnforceAuthenticationTest.testUnauthenticatedRequest(EnforceAuthenticationTest.java:49)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
+</error>
     <system-out>Attempting to load  via file io.
 Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
 DEBUG Success &gt;&gt; Using log4j xml configuration file
@@ -162,7 +264,131 @@ Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\D
 Attempting to load  via file io.
 Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
 
-Test good request (request has x-roles header): https://www.example.com/admin/config
+Test bad request (no user in session): http://www.example.com/authenticated
+DEBUG Success &gt;&gt;In WAF doFilter
+DEBUG Success &gt;&gt; Starting stage 1
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.AuthenticatedRule
+INFO  04.04.2011.13:18:55:681,[IP=64.14.103.52,Rule=AuthenticatedRule,ID=(no rule ID)] User requested unauthenticated access to URI &apos;/authenticated&apos; [querystring=pid=1&amp;qid=test]
+</system-out>
+    <system-err>log4j:WARN Continuable parsing error 46 and column 72
+log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
+log4j:WARN Continuable parsing error 48 and column 23
+log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
+</system-err>
+  </testcase>
+  <testcase time="0.092" classname="org.owasp.esapi.waf.EnforceHTTPSTest" name="testGoodSchemeSSLRequired"/>
+  <testcase time="0.069" classname="org.owasp.esapi.waf.EnforceHTTPSTest" name="testBadSchemeSSLNotRequired"/>
+  <testcase time="0.072" classname="org.owasp.esapi.waf.EnforceHTTPSTest" name="testBadSchemeSSLRequired">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:61)
+	at org.owasp.esapi.waf.WAFTestCase.createAndExecuteWAFResponseCodeTest(WAFTestCase.java:59)
+	at org.owasp.esapi.waf.EnforceHTTPSTest.testBadSchemeSSLRequired(EnforceHTTPSTest.java:66)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
+</error>
+    <system-out>Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+DEBUG Success &gt;&gt; Using log4j xml configuration file
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+DEBUG Success &gt;&gt; Initializing WAF
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+DEBUG Success &gt;&gt; Using log4j xml configuration file
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+
+Test bad scheme (no ssl - but its required): http://www.example.com/secure
+DEBUG Success &gt;&gt;In WAF doFilter
+DEBUG Success &gt;&gt; Starting stage 1
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.AuthenticatedRule
+INFO  04.04.2011.13:18:55:917,[IP=64.14.103.52,Rule=AuthenticatedRule,ID=(no rule ID)] User requested unauthenticated access to URI &apos;/secure&apos; [querystring=pid=1&amp;qid=test]
+</system-out>
+    <system-err>log4j:WARN Continuable parsing error 46 and column 72
+log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
+log4j:WARN Continuable parsing error 48 and column 23
+log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
+log4j:WARN Continuable parsing error 46 and column 72
+log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
+log4j:WARN Continuable parsing error 48 and column 23
+log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
+</system-err>
+  </testcase>
+  <testcase time="0.055" classname="org.owasp.esapi.waf.GoodRequestTest" name="testGoodRequest"/>
+  <testcase time="0.037" classname="org.owasp.esapi.waf.HttpOnlyTest" name="testAddHttpOnlyOnCustomCookie"/>
+  <testcase time="0.047" classname="org.owasp.esapi.waf.MustMatchTest" name="testUnauthorizedRequest">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:331)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:61)
+	at org.owasp.esapi.waf.WAFTestCase.createAndExecuteWAFResponseCodeTest(WAFTestCase.java:59)
+	at org.owasp.esapi.waf.MustMatchTest.testUnauthorizedRequest(MustMatchTest.java:41)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
+</error>
+    <system-out>Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+DEBUG Success &gt;&gt; Using log4j xml configuration file
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+
+Test bad request (request has no x-roles header): https://www.example.com/admin/config
 DEBUG Success &gt;&gt;In WAF doFilter
 DEBUG Success &gt;&gt; Starting stage 1
 DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.AuthenticatedRule
@@ -178,7 +404,7 @@ DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.Restrict
 DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictUserAgentRule
 DEBUG Success &gt;&gt; Starting Stage 2
 DEBUG Success &gt;&gt;  Applying BEFORE CHAIN rule:  org.owasp.esapi.waf.rules.MustMatchRule
-INFO  29.03.2011.04:49:38:195,[IP=192.168.1.100,Rule=MustMatchRule,ID=(no rule ID)] MustMatch rule failed (operator=1), value=&apos;admin&apos;, input=&apos;admin&apos;, header=&apos;x-roles&apos;
+INFO  04.04.2011.13:18:56:59,[IP=192.168.1.5,Rule=MustMatchRule,ID=(no rule ID)] MustMatch rule failed (input variable does not exist or is null)
 </system-out>
     <system-err>log4j:WARN Continuable parsing error 46 and column 72
 log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
@@ -186,18 +412,19 @@ log4j:WARN Continuable parsing error 48 and column 23
 log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
 </system-err>
   </testcase>
-  <testcase time="0.101" classname="org.owasp.esapi.waf.DynamicInsertionTest" name="testShouldReplaceContent"/>
-  <testcase time="0.038" classname="org.owasp.esapi.waf.DynamicInsertionTest" name="testShouldNotReplaceContent"/>
-  <testcase time="0.107" classname="org.owasp.esapi.waf.RestrictContentTypeTest" name="testNoContentType"/>
-  <testcase time="0.048" classname="org.owasp.esapi.waf.RestrictContentTypeTest" name="testGoodContentType"/>
-  <testcase time="0.052" classname="org.owasp.esapi.waf.RestrictContentTypeTest" name="testBadContentType"/>
-  <testcase time="0.058" classname="org.owasp.esapi.waf.RestrictExtensionTest" name="testGoodExtension"/>
-  <testcase time="0.036" classname="org.owasp.esapi.waf.RestrictExtensionTest" name="testBadExtension"/>
-  <testcase time="0.052" classname="org.owasp.esapi.waf.RestrictMethodTest" name="testGoodMethod"/>
-  <testcase time="0.038" classname="org.owasp.esapi.waf.RestrictMethodTest" name="testBadMethod"/>
-  <testcase time="0.051" classname="org.owasp.esapi.waf.RestrictUserAgentTest" name="testBadUserAgent">
-    <failure type="java.lang.AssertionError">java.lang.AssertionError
-	at org.owasp.esapi.waf.RestrictUserAgentTest.testBadUserAgent(RestrictUserAgentTest.java:34)
+  <testcase time="0.036" classname="org.owasp.esapi.waf.MustMatchTest" name="testAuthorizedRequest"/>
+  <testcase time="0.048" classname="org.owasp.esapi.waf.DynamicInsertionTest" name="testShouldReplaceContent"/>
+  <testcase time="0.042" classname="org.owasp.esapi.waf.DynamicInsertionTest" name="testShouldNotReplaceContent"/>
+  <testcase time="0.04" classname="org.owasp.esapi.waf.RestrictContentTypeTest" name="testNoContentType"/>
+  <testcase time="0.047" classname="org.owasp.esapi.waf.RestrictContentTypeTest" name="testGoodContentType"/>
+  <testcase time="0.027" classname="org.owasp.esapi.waf.RestrictContentTypeTest" name="testBadContentType">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:61)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:78)
+	at org.owasp.esapi.waf.RestrictContentTypeTest.testBadContentType(RestrictContentTypeTest.java:46)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -223,7 +450,7 @@ log4j:WARN The content of element type &quot;log4j:configuration&quot; must matc
 	at java.lang.reflect.Method.invoke(Unknown Source)
 	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
 	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
-</failure>
+</error>
     <system-out>Attempting to load  via file io.
 Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
 DEBUG Success &gt;&gt; Using log4j xml configuration file
@@ -231,12 +458,12 @@ Attempting to load  via file io.
 Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
 Attempting to load  via file io.
 Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
-Attempting to load waf-policies/restrict-user-agent-policy.xml via file io.
-Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi\waf-policies\restrict-user-agent-policy.xml
+Attempting to load waf-policies/restrict-content-type-policy.xml via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi\waf-policies\restrict-content-type-policy.xml
 DEBUG Success &gt;&gt;In WAF doFilter
 DEBUG Success &gt;&gt; Starting stage 1
-DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictUserAgentRule
-INFO  29.03.2011.04:49:38:806,[IP=64.14.103.52,Rule=RestrictUserAgentRule,ID=(no rule ID)] Disallowed user agent pattern &apos;.*GoogleBot.*&apos; found in user agent &apos;GoogleBot&apos;
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictContentTypeRule
+INFO  04.04.2011.13:18:56:306,[IP=64.14.103.52,Rule=RestrictContentTypeRule,ID=(no rule ID)] Disallowed content type based on deny pattern &apos;.*multipart.*&apos; found on URI &apos;/index&apos; (value was &apos;multipart/form-upload)&apos;
 </system-out>
     <system-err>log4j:WARN Continuable parsing error 46 and column 72
 log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
@@ -244,7 +471,188 @@ log4j:WARN Continuable parsing error 48 and column 23
 log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
 </system-err>
   </testcase>
-  <testcase time="0.038" classname="org.owasp.esapi.waf.RestrictUserAgentTest" name="testGoodUserAgent"/>
-  <testcase time="0.138" classname="org.owasp.esapi.waf.VirtualPatchTest" name="testNonAttacktAfterVirtualPatch"/>
-  <testcase time="0.043" classname="org.owasp.esapi.waf.VirtualPatchTest" name="testAttackAfterVirtualPatch"/>
+  <testcase time="0.023" classname="org.owasp.esapi.waf.RestrictExtensionTest" name="testGoodExtension"/>
+  <testcase time="0.023" classname="org.owasp.esapi.waf.RestrictExtensionTest" name="testBadExtension">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:61)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:78)
+	at org.owasp.esapi.waf.RestrictExtensionTest.testBadExtension(RestrictExtensionTest.java:53)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
+</error>
+    <system-out>Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+DEBUG Success &gt;&gt; Using log4j xml configuration file
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+restrictExtensionPolicy - reject any URL ending in .log
+Attempting to load waf-policies/restrict-extension-policy.xml via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi\waf-policies\restrict-extension-policy.xml
+DEBUG Success &gt;&gt;In WAF doFilter
+DEBUG Success &gt;&gt; Starting stage 1
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.PathExtensionRule
+INFO  04.04.2011.13:18:56:362,[IP=64.14.103.52,Rule=PathExtensionRule,ID=(no rule ID)] Disallowed extension pattern &apos;.*\.*\.log$$&apos; found on URI &apos;/logfiles/12192009.log&apos;
+</system-out>
+    <system-err>log4j:WARN Continuable parsing error 46 and column 72
+log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
+log4j:WARN Continuable parsing error 48 and column 23
+log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
+</system-err>
+  </testcase>
+  <testcase time="0.042" classname="org.owasp.esapi.waf.RestrictMethodTest" name="testGoodMethod"/>
+  <testcase time="0.04" classname="org.owasp.esapi.waf.RestrictMethodTest" name="testBadMethod">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:61)
+	at org.owasp.esapi.waf.WAFTestCase.createAndExecuteWAFResponseCodeTest(WAFTestCase.java:59)
+	at org.owasp.esapi.waf.RestrictMethodTest.testBadMethod(RestrictMethodTest.java:54)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
+</error>
+    <system-out>Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+DEBUG Success &gt;&gt; Using log4j xml configuration file
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+
+Test bad method: http://www.example.com/index.jsp
+DEBUG Success &gt;&gt;In WAF doFilter
+DEBUG Success &gt;&gt; Starting stage 1
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.AuthenticatedRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.IPRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.PathExtensionRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.HTTPMethodRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.HTTPMethodRule
+INFO  04.04.2011.13:18:56:443,[IP=64.14.103.52,Rule=HTTPMethodRule,ID=(no rule ID)] Disallowed HTTP method &apos;JEFF&apos; found for URL: http://www.example.com/index.jsp?pid=1&amp;qid=test
+</system-out>
+    <system-err>log4j:WARN Continuable parsing error 46 and column 72
+log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
+log4j:WARN Continuable parsing error 48 and column 23
+log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
+</system-err>
+  </testcase>
+  <testcase time="0.027" classname="org.owasp.esapi.waf.RestrictUserAgentTest" name="testBadUserAgent"/>
+  <testcase time="0.027" classname="org.owasp.esapi.waf.RestrictUserAgentTest" name="testGoodUserAgent"/>
+  <testcase time="0.033" classname="org.owasp.esapi.waf.VirtualPatchTest" name="testNonAttacktAfterVirtualPatch"/>
+  <testcase time="0.092" classname="org.owasp.esapi.waf.VirtualPatchTest" name="testAttackAfterVirtualPatch">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:331)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:61)
+	at org.owasp.esapi.waf.WAFTestCase.createAndExecuteWAFResponseCodeTest(WAFTestCase.java:59)
+	at org.owasp.esapi.waf.VirtualPatchTest.testAttackAfterVirtualPatch(VirtualPatchTest.java:58)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
+</error>
+    <system-out>Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+DEBUG Success &gt;&gt; Using log4j xml configuration file
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Testing attack after virtual patch on URL: https://www.example.com/foo.jsp
+DEBUG Success &gt;&gt;In WAF doFilter
+DEBUG Success &gt;&gt; Starting stage 1
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.AuthenticatedRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.IPRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.PathExtensionRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.HTTPMethodRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.HTTPMethodRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.EnforceHTTPSRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictContentTypeRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictContentTypeRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictContentTypeRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictUserAgentRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictUserAgentRule
+DEBUG Success &gt;&gt; Starting Stage 2
+DEBUG Success &gt;&gt;  Applying BEFORE CHAIN rule:  org.owasp.esapi.waf.rules.MustMatchRule
+DEBUG Success &gt;&gt;  Applying BEFORE CHAIN rule:  org.owasp.esapi.waf.rules.SimpleVirtualPatchRule
+INFO  04.04.2011.13:18:56:631,[IP=64.14.103.52,Rule=SimpleVirtualPatchRule,ID=1234] Virtual patch tripped on parameter &apos;bar&apos;. User input was &apos;09124asd135r123ir&gt;h2938rh9c82hr3hareohvw&apos; and legal pattern was &apos;[0-9a-zA-Z]&apos;: zomg attax
+</system-out>
+    <system-err>log4j:WARN Continuable parsing error 46 and column 72
+log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
+log4j:WARN Continuable parsing error 48 and column 23
+log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
+</system-err>
+  </testcase>
 </testsuite>
