@@ -1,16 +1,15 @@
 -------------------------------------------------------------------------------
 Test set: org.owasp.esapi.waf.MustMatchTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.075 sec <<< FAILURE!
-testAuthorizedRequest(org.owasp.esapi.waf.MustMatchTest)  Time elapsed: 0.02 sec  <<< FAILURE!
-junit.framework.AssertionFailedError: expected:<200> but was:<301>
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.failNotEquals(Assert.java:283)
-	at junit.framework.Assert.assertEquals(Assert.java:64)
-	at junit.framework.Assert.assertEquals(Assert.java:195)
-	at junit.framework.Assert.assertEquals(Assert.java:201)
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.354 sec <<< FAILURE!
+testUnauthorizedRequest(org.owasp.esapi.waf.MustMatchTest)  Time elapsed: 2.275 sec  <<< ERROR!
+java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:331)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:61)
 	at org.owasp.esapi.waf.WAFTestCase.createAndExecuteWAFResponseCodeTest(WAFTestCase.java:59)
-	at org.owasp.esapi.waf.MustMatchTest.testAuthorizedRequest(MustMatchTest.java:53)
+	at org.owasp.esapi.waf.MustMatchTest.testUnauthorizedRequest(MustMatchTest.java:41)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)

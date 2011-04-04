@@ -17,7 +17,7 @@
 			<default-redirect-page>/security/error.jsp</default-redirect-page>
 			<block-status>403</block-status>
 		</error-handling>
-	</settings>>
+	</settings>
 
 	<!--
 		Set authentication rules by path.

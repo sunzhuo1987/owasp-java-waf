@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.049" errors="0" skipped="0" tests="2" name="org.owasp.esapi.waf.VirtualPatchTest">
+<testsuite failures="0" time="0.049" errors="1" skipped="0" tests="2" name="org.owasp.esapi.waf.VirtualPatchTest">
   <properties>
     <property name="java.vendor" value="Sun Microsystems Inc."/>
     <property name="env.SYSTEMROOT" value="C:\Windows"/>
@@ -25,7 +25,7 @@
     <property name="user.language" value="es"/>
     <property name="env.WINDIR" value="C:\Windows"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jre6\bin"/>
-    <property name="classworlds.conf" value="C:\Users\Juan Carlos\workspace\.metadata\.plugins\org.maven.ide.eclipse\launches\m2conf2459090162575565396.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\Juan Carlos\workspace\.metadata\.plugins\org.maven.ide.eclipse\launches\m2conf9010065237079187278.tmp"/>
     <property name="java.version" value="1.6.0_24"/>
     <property name="env.PROCESSOR_IDENTIFIER" value="x86 Family 6 Model 15 Stepping 13, GenuineIntel"/>
     <property name="user.timezone" value="America/Mexico_City"/>
@@ -105,6 +105,69 @@
     <property name="java.specification.version" value="1.6"/>
     <property name="env.PROCESSOR_LEVEL" value="6"/>
   </properties>
-  <testcase time="0.026" classname="org.owasp.esapi.waf.VirtualPatchTest" name="testNonAttacktAfterVirtualPatch"/>
-  <testcase time="0.02" classname="org.owasp.esapi.waf.VirtualPatchTest" name="testAttackAfterVirtualPatch"/>
+  <testcase time="0.023" classname="org.owasp.esapi.waf.VirtualPatchTest" name="testNonAttacktAfterVirtualPatch"/>
+  <testcase time="0.022" classname="org.owasp.esapi.waf.VirtualPatchTest" name="testAttackAfterVirtualPatch">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:331)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:61)
+	at org.owasp.esapi.waf.WAFTestCase.createAndExecuteWAFResponseCodeTest(WAFTestCase.java:59)
+	at org.owasp.esapi.waf.VirtualPatchTest.testAttackAfterVirtualPatch(VirtualPatchTest.java:58)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
+</error>
+    <system-out>Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+DEBUG Success &gt;&gt; Using log4j xml configuration file
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Attempting to load  via file io.
+Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
+Testing attack after virtual patch on URL: https://www.example.com/foo.jsp
+DEBUG Success &gt;&gt;In WAF doFilter
+DEBUG Success &gt;&gt; Starting stage 1
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.AuthenticatedRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.IPRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.PathExtensionRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.HTTPMethodRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.HTTPMethodRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.EnforceHTTPSRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictContentTypeRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictContentTypeRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictContentTypeRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictUserAgentRule
+DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictUserAgentRule
+DEBUG Success &gt;&gt; Starting Stage 2
+DEBUG Success &gt;&gt;  Applying BEFORE CHAIN rule:  org.owasp.esapi.waf.rules.MustMatchRule
+DEBUG Success &gt;&gt;  Applying BEFORE CHAIN rule:  org.owasp.esapi.waf.rules.SimpleVirtualPatchRule
+INFO  04.04.2011.13:18:57:615,[IP=64.14.103.52,Rule=SimpleVirtualPatchRule,ID=1234] Virtual patch tripped on parameter &apos;bar&apos;. User input was &apos;09124asd135r123ir&gt;h2938rh9c82hr3hareohvw&apos; and legal pattern was &apos;[0-9a-zA-Z]&apos;: zomg attax
+</system-out>
+    <system-err>log4j:WARN Continuable parsing error 46 and column 72
+log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
+log4j:WARN Continuable parsing error 48 and column 23
+log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
+</system-err>
+  </testcase>
 </testsuite>

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------------------
 Test set: org.owasp.esapi.waf.EnforceHTTPSTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.248 sec
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.283 sec <<< FAILURE!
+testBadSchemeSSLRequired(org.owasp.esapi.waf.EnforceHTTPSTest)  Time elapsed: 0.063 sec  <<< ERROR!
+java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:61)
+	at org.owasp.esapi.waf.WAFTestCase.createAndExecuteWAFResponseCodeTest(WAFTestCase.java:59)
+	at org.owasp.esapi.waf.EnforceHTTPSTest.testBadSchemeSSLRequired(EnforceHTTPSTest.java:66)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at junit.framework.TestCase.runTest(TestCase.java:168)
+	at junit.framework.TestCase.runBare(TestCase.java:134)
+	at junit.framework.TestResult$1.protect(TestResult.java:110)
+	at junit.framework.TestResult.runProtected(TestResult.java:128)
+	at junit.framework.TestResult.run(TestResult.java:113)
+	at junit.framework.TestCase.run(TestCase.java:124)
+	at junit.framework.TestSuite.runTest(TestSuite.java:243)
+	at junit.framework.TestSuite.run(TestSuite.java:238)
+	at org.junit.internal.runners.JUnit38ClassRunner.run(JUnit38ClassRunner.java:83)
+	at org.apache.maven.surefire.junit4.JUnit4TestSet.execute(JUnit4TestSet.java:62)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.executeTestSet(AbstractDirectoryTestSuite.java:140)
+	at org.apache.maven.surefire.suite.AbstractDirectoryTestSuite.execute(AbstractDirectoryTestSuite.java:127)
+	at org.apache.maven.surefire.Surefire.run(Surefire.java:177)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
+	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
+

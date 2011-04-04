@@ -30,6 +30,7 @@ import nu.xom.ParsingException;
 import nu.xom.ValidityException;
 
 import org.apache.log4j.*;
+import org.omg.CORBA.portable.ApplicationException;
 import org.owasp.esapi.waf.ConfigurationException;
 import org.owasp.esapi.waf.actions.Action;
 import org.owasp.esapi.waf.actions.BlockAction;
@@ -60,15 +61,16 @@ import bsh.ParseException;
  * The class used to turn a policy file's contents into an object model. 
  * 
  * @author Arshan Dabirsiaghi
+ * @author Juan Carlos Calderon
  * @see org.owasp.esapi.waf.AppGuardianConfiguration
  */
 public class ConfigurationParser {
 
+	public static final int DEFAULT_RESPONSE_CODE = 403;
+	public static String defaultRedirectPage = "";
+	public static final String DEFAULT_SESSION_COOKIE = "JSESSIONID";
 	private static final String REGEX = "regex";
 	private static final String DEFAULT_PATH_APPLY_ALL = ".*";
-	private static final int DEFAULT_RESPONSE_CODE = 403;
-	private static String defaultRedirectPage = "";
-	private static final String DEFAULT_SESSION_COOKIE = "JSESSIONID";
 	private static org.apache.log4j.Logger logger;
 	private static final String[] STAGES = {
 		"before-request-body",
@@ -157,10 +159,16 @@ public class ConfigurationParser {
 					config.setDefaultErrorPage(defaultRedirectPage);
 				}
 				try {
-					config.setDefaultResponseCode( Integer.parseInt(errorHandlingRoot.getFirstChildElement("block-status").getValue()) );
+					//[JC]check code is into minimum and maximum HTTP response range, notice a value like 460 
+					//or higher will not be valid but still this validation is better than nothing
+					int blockCode = Integer.parseInt(errorHandlingRoot.getFirstChildElement("block-status").getValue());
+					if (blockCode <100 && blockCode > 510) {  
+						throw new ApplicationException("Block code is not in the range of valid numbers for HTTP response codes", null);
+					}
+					config.setDefaultResponseCode(blockCode);
 				} catch (Exception e) {
 					config.setDefaultResponseCode( DEFAULT_RESPONSE_CODE );
-					logger.log(Level.WARN, "block-status is not set to an appropriate integer number, ESAPI WAF is using '" + DEFAULT_RESPONSE_CODE + "' response code instead");
+					logger.log(Level.WARN, "block-status is not set to an appropriate HTTP response code number, ESAPI WAF is using '" + DEFAULT_RESPONSE_CODE + "' response code instead");
 				}
 			}
 			
@@ -174,11 +182,14 @@ public class ConfigurationParser {
 				String action = authNRoot.getAttributeValue("action");
 				String target = authNRoot.getAttributeValue("target");
 				String blockStatus = authNRoot.getAttributeValue("block-status");
-
-				if ( path != null && key != null ) {
-					config.addBeforeBodyRule(new AuthenticatedRule(id,key,Pattern.compile(path),getExceptionsFromElement(authNRoot), getActionFromElement(action, target, blockStatus)));
+				
+				List<Object> AuthExepts = getExceptionsFromElement(authNRoot);
+				//[JC]Add global default error page as exception for authentication rule
+				AuthExepts.add(defaultRedirectPage);
+				if ( path != null && key != null ) {	
+					config.addBeforeBodyRule(new AuthenticatedRule(id,key,Pattern.compile(path), AuthExepts, getActionFromElement(action, target, blockStatus)));
 				} else if ( key != null ) {
-					config.addBeforeBodyRule(new AuthenticatedRule(id,key,null,getExceptionsFromElement(authNRoot), getActionFromElement(action, target, blockStatus)));
+					config.addBeforeBodyRule(new AuthenticatedRule(id,key,null,AuthExepts, getActionFromElement(action, target, blockStatus)));
 				} else {
 					throw new ConfigurationException("The <authentication-rules> rule requires a 'key' attribute");
 				}
@@ -377,18 +388,21 @@ public class ConfigurationParser {
 					String action = e.getAttributeValue("action");
 					String target = e.getAttributeValue("target");
 					String blockStatus = e.getAttributeValue("block-status");
-
+					int iblockStatus = config.getDefaultResponseCode();
+					
 					if ( allow != null && deny != null ) {
 						throw new ConfigurationException("restrict-user-agent rule should not have both 'allow' and 'deny' values");
 					}
+					
+					if (blockStatus != null) {
+						iblockStatus = config.getDefaultResponseCode();
+					}
 
-					if ( allow != null ) {
-						
-						config.addBeforeBodyRule( new RestrictUserAgentRule(id, Pattern.compile(allow), null, getActionFromElement(action,  target, blockStatus)) );
-
+					if ( allow != null ) {						
+						config.addBeforeBodyRule( new RestrictUserAgentRule(id, Pattern.compile(allow), null, new BlockAction(iblockStatus)) );
 					} else if ( deny != null ) {
 
-						config.addBeforeBodyRule( new RestrictUserAgentRule(id, null, Pattern.compile(deny), getActionFromElement(action,  target, blockStatus)) );
+						config.addBeforeBodyRule( new RestrictUserAgentRule(id, null, Pattern.compile(deny), new BlockAction(iblockStatus)) );
 
 					} else {
 						throw new ConfigurationException("restrict-user-agent rule should have either an 'allow' or 'deny' value");
@@ -662,11 +676,15 @@ public class ConfigurationParser {
 			return new DefaultAction();
 		} else if ( "block".equals(action.toLowerCase() ) ) {
 			int iblockStatus = DEFAULT_RESPONSE_CODE; 
-				if (blockStatus != null) {
-					try {
-						iblockStatus = Integer.parseInt(blockStatus);
-					} finally {}
-				}
+			if (blockStatus != null) {
+				try {
+					//[JC] validate block code to be at least into the range of valid HTTP response codes
+					int tempblockStatus = Integer.parseInt(blockStatus);
+					if (tempblockStatus >= 100 && tempblockStatus <= 510){
+						iblockStatus = tempblockStatus;
+					}
+				} finally {}
+			}
 			return new BlockAction(iblockStatus);
 		} else if ( "redirect".equals(action.toLowerCase() ) ){
 			if (target != null){

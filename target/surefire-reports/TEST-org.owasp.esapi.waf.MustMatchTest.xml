@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="1" time="0.042" errors="0" skipped="0" tests="2" name="org.owasp.esapi.waf.MustMatchTest">
+<testsuite failures="0" time="2.33" errors="1" skipped="0" tests="2" name="org.owasp.esapi.waf.MustMatchTest">
   <properties>
     <property name="java.vendor" value="Sun Microsystems Inc."/>
     <property name="env.SYSTEMROOT" value="C:\Windows"/>
@@ -25,7 +25,7 @@
     <property name="user.language" value="es"/>
     <property name="env.WINDIR" value="C:\Windows"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jre6\bin"/>
-    <property name="classworlds.conf" value="C:\Users\Juan Carlos\workspace\.metadata\.plugins\org.maven.ide.eclipse\launches\m2conf2459090162575565396.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\Juan Carlos\workspace\.metadata\.plugins\org.maven.ide.eclipse\launches\m2conf9010065237079187278.tmp"/>
     <property name="java.version" value="1.6.0_24"/>
     <property name="env.PROCESSOR_IDENTIFIER" value="x86 Family 6 Model 15 Stepping 13, GenuineIntel"/>
     <property name="user.timezone" value="America/Mexico_City"/>
@@ -105,16 +105,14 @@
     <property name="java.specification.version" value="1.6"/>
     <property name="env.PROCESSOR_LEVEL" value="6"/>
   </properties>
-  <testcase time="0.019" classname="org.owasp.esapi.waf.MustMatchTest" name="testUnauthorizedRequest"/>
-  <testcase time="0.02" classname="org.owasp.esapi.waf.MustMatchTest" name="testAuthorizedRequest">
-    <failure message="expected:&lt;200&gt; but was:&lt;301&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;200&gt; but was:&lt;301&gt;
-	at junit.framework.Assert.fail(Assert.java:47)
-	at junit.framework.Assert.failNotEquals(Assert.java:283)
-	at junit.framework.Assert.assertEquals(Assert.java:64)
-	at junit.framework.Assert.assertEquals(Assert.java:195)
-	at junit.framework.Assert.assertEquals(Assert.java:201)
+  <testcase time="2.275" classname="org.owasp.esapi.waf.MustMatchTest" name="testUnauthorizedRequest">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
+	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:331)
+	at org.owasp.esapi.waf.WAFTestUtility.checkWAFResult(WAFTestUtility.java:50)
+	at org.owasp.esapi.waf.WAFTestUtility.createAndExecuteWAFTransaction(WAFTestUtility.java:61)
 	at org.owasp.esapi.waf.WAFTestCase.createAndExecuteWAFResponseCodeTest(WAFTestCase.java:59)
-	at org.owasp.esapi.waf.MustMatchTest.testAuthorizedRequest(MustMatchTest.java:53)
+	at org.owasp.esapi.waf.MustMatchTest.testUnauthorizedRequest(MustMatchTest.java:41)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
@@ -138,7 +136,7 @@
 	at java.lang.reflect.Method.invoke(Unknown Source)
 	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
 	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
-</failure>
+</error>
     <system-out>Attempting to load  via file io.
 Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
 DEBUG Success &gt;&gt; Using log4j xml configuration file
@@ -147,7 +145,7 @@ Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\D
 Attempting to load  via file io.
 Found in &apos;org.owasp.esapi.resources&apos; directory: C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi
 
-Test good request (request has x-roles header): https://www.example.com/admin/config
+Test bad request (request has no x-roles header): https://www.example.com/admin/config
 DEBUG Success &gt;&gt;In WAF doFilter
 DEBUG Success &gt;&gt; Starting stage 1
 DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.AuthenticatedRule
@@ -163,7 +161,7 @@ DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.Restrict
 DEBUG Success &gt;&gt; Applying BEFORE rule:  org.owasp.esapi.waf.rules.RestrictUserAgentRule
 DEBUG Success &gt;&gt; Starting Stage 2
 DEBUG Success &gt;&gt;  Applying BEFORE CHAIN rule:  org.owasp.esapi.waf.rules.MustMatchRule
-INFO  29.03.2011.04:49:40:944,[IP=192.168.1.100,Rule=MustMatchRule,ID=(no rule ID)] MustMatch rule failed (operator=1), value=&apos;admin&apos;, input=&apos;admin&apos;, header=&apos;x-roles&apos;
+INFO  04.04.2011.13:19:00:247,[IP=192.168.1.5,Rule=MustMatchRule,ID=(no rule ID)] MustMatch rule failed (input variable does not exist or is null)
 </system-out>
     <system-err>log4j:WARN Continuable parsing error 46 and column 72
 log4j:WARN Element type &quot;loggerFactory&quot; must be declared.
@@ -171,4 +169,5 @@ log4j:WARN Continuable parsing error 48 and column 23
 log4j:WARN The content of element type &quot;log4j:configuration&quot; must match &quot;(renderer*,appender*,(category|logger)*,root?,categoryFactory?)&quot;.
 </system-err>
   </testcase>
+  <testcase time="0.05" classname="org.owasp.esapi.waf.MustMatchTest" name="testAuthorizedRequest"/>
 </testsuite>
