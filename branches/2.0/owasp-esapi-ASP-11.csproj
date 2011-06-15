@@ -1,0 +1,210 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>owasp-esapi-ASP-11</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>owasp_esapi_ASP_11</RootNamespace>
+    <NoStandardLibraries>false</NoStandardLibraries>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <ProjectGuid>{366DD1B5-7540-4310-847C-168784D8B207}</ProjectGuid>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>
+    </DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib">
+      <Name>mscorlib</Name>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Design">
+      <Name>System.Design</Name>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Name>System.Drawing</Name>
+    </Reference>
+    <Reference Include="System.Management">
+      <Name>System.Management</Name>
+    </Reference>
+    <Reference Include="System.Web">
+      <Name>System.Web</Name>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <Name>System.Windows.Forms</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.Xml</Name>
+    </Reference>
+    <Reference Include="System.XML">
+      <Name>System.XML</Name>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="src\org\owasp\esapi\AccessController.cs" />
+    <Compile Include="src\org\owasp\esapi\AccessReferenceMap.cs" />
+    <Compile Include="src\org\owasp\esapi\Authenticator.cs" />
+    <Compile Include="src\org\owasp\esapi\Encoder.cs" />
+    <Compile Include="src\org\owasp\esapi\EncryptedProperties.cs" />
+    <Compile Include="src\org\owasp\esapi\Encryptor.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\AccessControlException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\AuthenticationAccountsException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\AuthenticationCredentialsException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\AuthenticationException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\AuthenticationHostException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\AuthenticationLoginException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\AvailabilityException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\CertificateException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\EncodingException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\EncryptionException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\EnterpriseSecurityException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\ExecutorException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\IntegrityException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\IntrusionException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\ValidationAvailabilityException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\ValidationException.cs" />
+    <Compile Include="src\org\owasp\esapi\errors\ValidationUploadException.cs" />
+    <Compile Include="src\org\owasp\esapi\ESAPI.cs" />
+    <Compile Include="src\org\owasp\esapi\Executor.cs" />
+    <Compile Include="src\org\owasp\esapi\filters\ESAPIFilter.cs" />
+    <Compile Include="src\org\owasp\esapi\HTTPUtilities.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\IAccessController.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\IAccessReferenceMap.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\IAuthenticator.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\IEncoder.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\IEncryptedProperties.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\IEncryptor.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\IExecutor.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\IHTTPUtilities.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\IIntrusionDetector.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\ILogger.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\IRandomizer.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\ISecurityConfiguration.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\IUser.cs" />
+    <Compile Include="src\org\owasp\esapi\interfaces\IValidator.cs" />
+    <Compile Include="src\org\owasp\esapi\IntrusionDetector.cs" />
+    <Compile Include="src\org\owasp\esapi\Logger.cs" />
+    <Compile Include="src\org\owasp\esapi\PKCSKeyGenerator.cs" />
+    <Compile Include="src\org\owasp\esapi\Randomizer.cs" />
+    <Compile Include="src\org\owasp\esapi\SecurityConfiguration.cs" />
+    <Compile Include="src\org\owasp\esapi\Threshold.cs" />
+    <Compile Include="src\org\owasp\esapi\User.cs" />
+    <Compile Include="src\org\owasp\esapi\Validator.cs" />
+    <Compile Include="SupportClass.cs" />
+    <Content Include="build.xml" />
+    <Content Include="Global.asax">
+      <SubType>Component</SubType>
+    </Content>
+    <Content Include="src\org\owasp\esapi\doc-files\Architecture.jpg" />
+    <Content Include="src\org\owasp\esapi\doc-files\OWASPTopTen.jpg" />
+    <Content Include="src\org\owasp\esapi\errors\package.html" />
+    <Content Include="src\org\owasp\esapi\interfaces\doc-files\AccessController.jpg" />
+    <Content Include="src\org\owasp\esapi\interfaces\doc-files\AccessReferenceMap.jpg" />
+    <Content Include="src\org\owasp\esapi\interfaces\doc-files\Authenticator.jpg" />
+    <Content Include="src\org\owasp\esapi\interfaces\doc-files\HTTPUtilities.jpg" />
+    <Content Include="src\org\owasp\esapi\interfaces\doc-files\IntrusionDetector.jpg" />
+    <Content Include="src\org\owasp\esapi\interfaces\doc-files\Validator.jpg" />
+    <Content Include="src\org\owasp\esapi\interfaces\package.html" />
+    <Content Include="src\org\owasp\esapi\package.html" />
+    <Content Include="Web.config" />
+    <EmbeddedResource Include="Global.asax.resx">
+      <DependentUpon>Global.asax.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="_ConversionReport.htm">
+      <SubType>Preview</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v8.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
