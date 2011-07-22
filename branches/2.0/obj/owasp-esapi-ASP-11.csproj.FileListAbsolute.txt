@@ -1,3 +1,0 @@
-C:\Documents and Settings\Juan Carlos\Escritorio\OWASP\Classic ASP\owasp-esapi-java-1.1.1\owasp-esapi-ASP-1.1\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\Juan Carlos\Escritorio\OWASP\Classic ASP\owasp-esapi-java-1.1.1\owasp-esapi-ASP-1.1\obj\Debug\owasp_esapi_ASP_11.Global.resources
-C:\Documents and Settings\Juan Carlos\Escritorio\OWASP\Classic ASP\owasp-esapi-java-1.1.1\owasp-esapi-ASP-1.1\obj\Debug\owasp-esapi-ASP-11.csproj.GenerateResource.Cache
