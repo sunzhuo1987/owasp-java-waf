@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.owasp.esapi.waf.RestrictContentTypeTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.153 sec <<< FAILURE!
-testBadContentType(org.owasp.esapi.waf.RestrictContentTypeTest)  Time elapsed: 0.043 sec  <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.094 sec <<< FAILURE!
+testBadContentType(org.owasp.esapi.waf.RestrictContentTypeTest)  Time elapsed: 0.047 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)

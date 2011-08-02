@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.owasp.esapi.waf.actions.Action;
-import org.owasp.esapi.waf.actions.DefaultAction;
 import org.owasp.esapi.waf.actions.DoNothingAction;
 import org.owasp.esapi.waf.internal.InterceptingHTTPServletRequest;
 import org.owasp.esapi.waf.internal.InterceptingHTTPServletResponse;
@@ -96,32 +95,33 @@ public class SimpleVirtualPatchRule extends Rule {
 
 				target = target.replaceAll("\\*", ".*");
 				Pattern p = Pattern.compile(target);
+				String[] values = null;
 				while (en.hasMoreElements() ) {
 					String s = (String)en.nextElement();
-					String value = null;
 					if ( p.matcher(s).matches() ) {
 						if ( parameter ) {
-							value = request.getDictionaryParameter(s);
+							values = request.ARGS.get(s);
 						} else {
-							value = request.getHeader(s);
+							values = request.REQUEST_HEADERS.get(s);
 						}
-						if ( value != null && ! valid.matcher(value).matches() ) {
-							log(request, "Virtual patch tripped on variable '" + variable + "' (specifically '" + s + "'). User input was '" + value + "' and legal pattern was '" + valid.pattern() + "': " + message);
-							return this.ruleDefaultAction;
+						for (int i=0; i<values.length; i++) {
+							if ( values[i] != null && ! valid.matcher(values[i]).matches() ) {
+								log(request, "Virtual patch tripped on variable '" + variable + "' (specifically '" + s + "'). User input was '" + values[i] + "' and legal pattern was '" + valid.pattern() + "': " + message);
+								return this.ruleDefaultAction;
+							}	
 						}
 					}
 				}
-				
 				return new DoNothingAction();
 
 			} else {
-				String value;
+				String[] values;
 				if ( parameter ) {
-					value = request.getDictionaryParameter(target);
+					values = request.ARGS.get(target);
 				} else {
-					value = request.getHeader(target);
+					values = request.REQUEST_HEADERS.get(target);
 				}
-				if (value == null){
+				if (values == null || values.length == 0){
 					if (this.required) {
 						log(request, "Virtual patch tripped on " + (parameter? "parameter" : "header") + " '" + target + "'. Parameter is required and not present: " + message);
 						return this.ruleDefaultAction;
@@ -129,17 +129,18 @@ public class SimpleVirtualPatchRule extends Rule {
 						return new DoNothingAction();
 					}
 				} else { //it is not null
-					if (valid.matcher(value).matches() ) {
-						return new DoNothingAction();
-					} else {
-						log(request, "Virtual patch tripped on " + (parameter? "parameter" : "header") + " '" + target + "'. User input was '" + value + "' and legal pattern was '" + valid.pattern() + "': " + message);
-						return this.ruleDefaultAction;
+					for (int i = 0; i < values.length; i++) {
+						if (valid.matcher(values[i]).matches() ) {
+							return new DoNothingAction();
+						} else {
+							log(request, "Virtual patch tripped on " + (parameter? "parameter" : "header") + " '" + target + "'. User input was '" + values[i] + "' and legal pattern was '" + valid.pattern() + "': " + message);
+							return this.ruleDefaultAction;
+						}	
 					}
 				}
 			}
-
 		}
-
+		return new DoNothingAction();
 	}
 
 	public String getMessage() {

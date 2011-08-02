@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.owasp.esapi.waf.MustMatchTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.354 sec <<< FAILURE!
-testUnauthorizedRequest(org.owasp.esapi.waf.MustMatchTest)  Time elapsed: 2.275 sec  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.062 sec <<< FAILURE!
+testUnauthorizedRequest(org.owasp.esapi.waf.MustMatchTest)  Time elapsed: 0 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:331)

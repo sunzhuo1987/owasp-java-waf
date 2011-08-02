@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -212,12 +213,16 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 		 * 2nd argument = should we bother intercepting the egress response?
 		 * 3rd argument = cookie rules because thats where they mostly get acted on
 		 */
-		
-		if ( 	appGuardConfig.getCookieRules().size() + 
-				appGuardConfig.getBeforeResponseRules().size() > 0) {
-			response = new InterceptingHTTPServletResponse(httpResponse, true, appGuardConfig.getCookieRules());
+		int responseRulesCount = appGuardConfig.getCookieRules().size() + appGuardConfig.getBeforeResponseRules().size();
+		if (appGuardConfig.getResponseBodyAccess()) {
+			if (responseRulesCount > 0) { //if there are rules to process then intercept response
+				response = new InterceptingHTTPServletResponse(httpResponse, true, appGuardConfig.getCookieRules());
+			}
+		} else {
+			if (responseRulesCount > 0) { //want on ignored rules
+				logger.warn("ResponseBodyAccess disabled " + responseRulesCount + " cookie/response-specific rules will be ignored");
+			}
 		}
-		
 		/*
 		 * Stage 1: Rules that do not need the request body.
 		 */
@@ -275,61 +280,63 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 		 * Create the InterceptingHTTPServletRequest.
 		 */
 		
-		try {
-			request = new InterceptingHTTPServletRequest((HttpServletRequest)servletRequest);
-		} catch (FileUploadException fue) {
-			logger.error("Success >> Error Wrapping Request", fue );
-		}
-
+		
 		/*
 		 * Stage 2: After the body has been read, but before the the application has gotten it.
 		 */
 		logger.debug("Success >> Starting Stage 2" );
 
-		rules = this.appGuardConfig.getAfterBodyRules();
+		if (this.appGuardConfig.getResponseBodyAccess()) {
+			try {
+				request = new InterceptingHTTPServletRequest((HttpServletRequest)servletRequest);
+			} catch (FileUploadException fue) {
+				logger.error("Success >> Error Wrapping Request", fue );
+			}
+			rules = this.appGuardConfig.getAfterBodyRules();
 
-		for(int i=0;i<rules.size();i++) {
-
-			Rule rule = rules.get(i);
-			logger.debug("Success >>  Applying BEFORE CHAIN rule:  " + rule.getClass().getName() );
-
-			/*
-			 * The rules execute in check(). The check() method will take care of logging. 
-			 * All we have to do is decide what other actions to take.
-			 */
-			Action action = rule.check(request, response, httpResponse);
-
-			if ( action.isActionNecessary() ) {
-
-				if ( action instanceof BlockAction ) {
-					if ( response != null ) {
-						response.setStatus(((BlockAction)action).getStatusCode());
-					} else {
-						httpResponse.setStatus(((BlockAction)action).getStatusCode());
-					}
-					return;
-
-				} else if ( action instanceof RedirectAction ) {
-					//HttpSession httpSession = httpRequest.getSession();
-					httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
-					sendRedirect(httpRequest, response, httpResponse, ((RedirectAction)action).getRedirectURL()); 
-					return;
-
-				} else if ( action instanceof DefaultAction ) {				
-					switch ( AppGuardianConfiguration.DEFAULT_FAIL_ACTION) {
-						case AppGuardianConfiguration.BLOCK:
-							if ( response != null ) {
-								response.setStatus(appGuardConfig.getDefaultResponseCode());
-							} else {
-								httpResponse.setStatus(appGuardConfig.getDefaultResponseCode());
-							}
-							return;
-							
-						case AppGuardianConfiguration.REDIRECT:
-							//HttpSession httpSession = httpRequest.getSession();
-							httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
-							sendRedirect(httpRequest, response, httpResponse, appGuardConfig.getDefaultErrorPage());
-							return;
+			for(int i=0;i<rules.size();i++) {
+	
+				Rule rule = rules.get(i);
+				logger.debug("Success >>  Applying BEFORE CHAIN rule:  " + rule.getClass().getName() );
+	
+				/*
+				 * The rules execute in check(). The check() method will take care of logging. 
+				 * All we have to do is decide what other actions to take.
+				 */
+				Action action = rule.check(request, response, httpResponse);
+	
+				if ( action.isActionNecessary() ) {
+	
+					if ( action instanceof BlockAction ) {
+						if ( response != null ) {
+							response.setStatus(((BlockAction)action).getStatusCode());
+						} else {
+							httpResponse.setStatus(((BlockAction)action).getStatusCode());
+						}
+						return;
+	
+					} else if ( action instanceof RedirectAction ) {
+						//HttpSession httpSession = httpRequest.getSession();
+						httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
+						sendRedirect(httpRequest, response, httpResponse, ((RedirectAction)action).getRedirectURL()); 
+						return;
+	
+					} else if ( action instanceof DefaultAction ) {				
+						switch ( AppGuardianConfiguration.DEFAULT_FAIL_ACTION) {
+							case AppGuardianConfiguration.BLOCK:
+								if ( response != null ) {
+									response.setStatus(appGuardConfig.getDefaultResponseCode());
+								} else {
+									httpResponse.setStatus(appGuardConfig.getDefaultResponseCode());
+								}
+								return;
+								
+							case AppGuardianConfiguration.REDIRECT:
+								//HttpSession httpSession = httpRequest.getSession();
+								httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
+								sendRedirect(httpRequest, response, httpResponse, appGuardConfig.getDefaultErrorPage());
+								return;
+						}
 					}
 				}
 			}
@@ -339,57 +346,59 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 		 * In between stages 2 and 3 is the application's processing of the input.
 		 */
 		logger.debug("Success >> Calling the FilterChain: " + chain );
-		chain.doFilter(request, response != null ? response : httpResponse);
+		chain.doFilter(request != null ? request : httpRequest, response != null ? response : httpResponse);
 
 		/*
 		 * Stage 3: Before the response has been sent back to the user.
 		 */
 		logger.debug("Success >> Starting Stage 3" );
-
-		rules = this.appGuardConfig.getBeforeResponseRules();
-
-		for(int i=0;i<rules.size();i++) {
-
-			Rule rule = rules.get(i);
-			logger.debug("Success >> Applying AFTER CHAIN rule:  " + rule.getClass().getName() );
-
-			/*
-			 * The rules execute in check(). The check() method will also log. All we have
-			 * to do is decide what other actions to take.
-			 */
-			Action action = rule.check(request, response, httpResponse);
-
-			if ( action.isActionNecessary() ) {
-
-				if ( action instanceof BlockAction ) {
-					if ( response != null ) {
-						response.setStatus(((BlockAction)action).getStatusCode());
-					} else {
-						httpResponse.setStatus(((BlockAction)action).getStatusCode());
-					}
-					return;
-
-				} else if ( action instanceof RedirectAction ) {
-					//HttpSession httpSession = httpRequest.getSession();
-					httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
-					sendRedirect(httpRequest, response, httpResponse, ((RedirectAction)action).getRedirectURL()); 
-					return;
-
-				} else if ( action instanceof DefaultAction ) {				
-					switch ( AppGuardianConfiguration.DEFAULT_FAIL_ACTION) {
-						case AppGuardianConfiguration.BLOCK:
-							if ( response != null ) {
-								response.setStatus(appGuardConfig.getDefaultResponseCode());
-							} else {
-								httpResponse.setStatus(appGuardConfig.getDefaultResponseCode());
-							}
-							return;
-							
-						case AppGuardianConfiguration.REDIRECT:
-							//HttpSession httpSession = httpRequest.getSession();
-							httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
-							sendRedirect(httpRequest, response, httpResponse, appGuardConfig.getDefaultErrorPage());
-							return;
+		
+		if (appGuardConfig.getResponseBodyAccess()) { //Process response rules
+			rules = this.appGuardConfig.getBeforeResponseRules();
+	
+			for(int i=0;i<rules.size();i++) {
+	
+				Rule rule = rules.get(i);
+				logger.debug("Success >> Applying AFTER CHAIN rule:  " + rule.getClass().getName() );
+	
+				/*
+				 * The rules execute in check(). The check() method will also log. All we have
+				 * to do is decide what other actions to take.
+				 */
+				Action action = rule.check(request, response, httpResponse);
+	
+				if ( action.isActionNecessary() ) {
+	
+					if ( action instanceof BlockAction ) {
+						if ( response != null ) {
+							response.setStatus(((BlockAction)action).getStatusCode());
+						} else {
+							httpResponse.setStatus(((BlockAction)action).getStatusCode());
+						}
+						return;
+	
+					} else if ( action instanceof RedirectAction ) {
+						//HttpSession httpSession = httpRequest.getSession();
+						httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
+						sendRedirect(httpRequest, response, httpResponse, ((RedirectAction)action).getRedirectURL()); 
+						return;
+	
+					} else if ( action instanceof DefaultAction ) {				
+						switch ( AppGuardianConfiguration.DEFAULT_FAIL_ACTION) {
+							case AppGuardianConfiguration.BLOCK:
+								if ( response != null ) {
+									response.setStatus(appGuardConfig.getDefaultResponseCode());
+								} else {
+									httpResponse.setStatus(appGuardConfig.getDefaultResponseCode());
+								}
+								return;
+								
+							case AppGuardianConfiguration.REDIRECT:
+								//HttpSession httpSession = httpRequest.getSession();
+								httpRequest.setAttribute("ESAPIWAF_LastBrokenRule", rule);
+								sendRedirect(httpRequest, response, httpResponse, appGuardConfig.getDefaultErrorPage());
+								return;
+						}
 					}
 				}
 			}
@@ -399,8 +408,8 @@ public class ESAPIWebApplicationFirewallFilter implements Filter {
 		 * Now that we've run our last set of rules we can allow the response to go through if
 		 * we were intercepting.
 		 */
-		
 		if ( response != null ) {
+			response.LoadVariables(httpResponse);
 			logger.debug("Success >>> committing reponse" );
 			response.commit();
 		}

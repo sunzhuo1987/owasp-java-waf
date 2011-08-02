@@ -18,13 +18,18 @@ package org.owasp.esapi.waf.internal;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.Hashtable;
 import java.util.List;
+import java.util.Vector;
 
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServletResponseWrapper;
 
+import org.junit.runner.Request;
 import org.owasp.esapi.waf.rules.AddHTTPOnlyFlagRule;
 import org.owasp.esapi.waf.rules.AddSecureFlagRule;
 import org.owasp.esapi.waf.rules.Rule;
@@ -48,6 +53,14 @@ public class InterceptingHTTPServletResponse extends HttpServletResponseWrapper 
 	private List<AddHTTPOnlyFlagRule> addHTTPOnlyFlagRules = null;
 	private boolean alreadyCalledWriter = false;
 	private boolean alreadyCalledOutputStream = false;
+	
+	public String RESPONSE_BODY;
+	public long RESPONSE_CONTENT_LENGTH;
+	public String RESPONSE_CONTENT_TYPE;
+	public Enumeration<String> RESPONSE_HEADERS;
+	public Enumeration<String> RESPONSE_HEADERS_NAMES;
+	public String RESPONSE_PROTOCOL;
+	public int RESPONSE_STATUS;
 
 	public InterceptingHTTPServletResponse(HttpServletResponse response, boolean buffering, List<Rule> cookieRules) throws IOException {
 
@@ -57,7 +70,7 @@ public class InterceptingHTTPServletResponse extends HttpServletResponseWrapper 
 		
 		this.isos = new InterceptingServletOutputStream(response.getOutputStream(), buffering);
 		this.ipw = new InterceptingPrintWriter(new PrintWriter(isos));
-
+		
 		addSecureFlagRules = new ArrayList<AddSecureFlagRule>();
 		addHTTPOnlyFlagRules = new ArrayList<AddHTTPOnlyFlagRule>();
 
@@ -183,4 +196,20 @@ public class InterceptingHTTPServletResponse extends HttpServletResponseWrapper 
         return header;
     }
 
+	public void LoadVariables(HttpServletResponse response) throws IOException {
+		RESPONSE_BODY = String.valueOf(isos.getResponseBytes());
+		this.RESPONSE_CONTENT_LENGTH = RESPONSE_BODY.length();
+		this.RESPONSE_CONTENT_TYPE = response.getContentType();
+		//this.RESPONSE_HEADERS_NAMES = response 
+			//Collections.list(response.getHeaderNames());
+		/*this.RESPONSE_HEADERS = new Hashtable<String, String>(Math.round(REQUEST_HEADERS_NAMES.size()*1.2f), 0.9f); //try to get the initial capacity as needed avoiding reassignment
+		for (int i=0; i<this.REQUEST_HEADERS_NAMES.size(); i++){
+			Enumeration e = request.getHeaders(this.REQUEST_HEADERS_NAMES.elementAt(i));
+			while (e.hasMoreElements()){
+				this.REQUEST_HEADERS.put(this.REQUEST_HEADERS_NAMES.elementAt(i), e.nextElement().toString());
+			}
+		}*/
+		//this.RESPONSE_PROTOCOL = request.;
+		//this.RESPONSE_STATUS = response.;	
+	}
 }

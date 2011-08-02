@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.owasp.esapi.waf.EnforceHTTPSTest
 -------------------------------------------------------------------------------
-Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.283 sec <<< FAILURE!
-testBadSchemeSSLRequired(org.owasp.esapi.waf.EnforceHTTPSTest)  Time elapsed: 0.063 sec  <<< ERROR!
+Tests run: 3, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.141 sec <<< FAILURE!
+testBadSchemeSSLRequired(org.owasp.esapi.waf.EnforceHTTPSTest)  Time elapsed: 0.047 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
