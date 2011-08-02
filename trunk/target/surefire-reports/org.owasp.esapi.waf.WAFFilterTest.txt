@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.owasp.esapi.waf.WAFFilterTest
 -------------------------------------------------------------------------------
-Tests run: 28, Failures: 0, Errors: 9, Skipped: 0, Time elapsed: 3.196 sec <<< FAILURE!
-testRedirectBeanShellRule(org.owasp.esapi.waf.BeanShellTest)  Time elapsed: 0.294 sec  <<< ERROR!
+Tests run: 28, Failures: 0, Errors: 9, Skipped: 0, Time elapsed: 1.812 sec <<< FAILURE!
+testRedirectBeanShellRule(org.owasp.esapi.waf.BeanShellTest)  Time elapsed: 0.142 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:251)
@@ -36,7 +36,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
 	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
 
-testBadDetectOutbound(org.owasp.esapi.waf.DetectOutboundTest)  Time elapsed: 0.063 sec  <<< ERROR!
+testBadDetectOutbound(org.owasp.esapi.waf.DetectOutboundTest)  Time elapsed: 0.031 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:391)
@@ -70,7 +70,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
 	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
 
-testUnauthenticatedRequest(org.owasp.esapi.waf.EnforceAuthenticationTest)  Time elapsed: 0.06 sec  <<< ERROR!
+testUnauthenticatedRequest(org.owasp.esapi.waf.EnforceAuthenticationTest)  Time elapsed: 0.016 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
@@ -104,7 +104,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
 	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
 
-testBadSchemeSSLRequired(org.owasp.esapi.waf.EnforceHTTPSTest)  Time elapsed: 0.073 sec  <<< ERROR!
+testBadSchemeSSLRequired(org.owasp.esapi.waf.EnforceHTTPSTest)  Time elapsed: 0.032 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
@@ -138,7 +138,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
 	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
 
-testUnauthorizedRequest(org.owasp.esapi.waf.MustMatchTest)  Time elapsed: 0.048 sec  <<< ERROR!
+testUnauthorizedRequest(org.owasp.esapi.waf.MustMatchTest)  Time elapsed: 0.031 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:331)
@@ -172,7 +172,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
 	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
 
-testBadContentType(org.owasp.esapi.waf.RestrictContentTypeTest)  Time elapsed: 0.028 sec  <<< ERROR!
+testBadContentType(org.owasp.esapi.waf.RestrictContentTypeTest)  Time elapsed: 0.031 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
@@ -206,7 +206,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
 	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
 
-testBadExtension(org.owasp.esapi.waf.RestrictExtensionTest)  Time elapsed: 0.023 sec  <<< ERROR!
+testBadExtension(org.owasp.esapi.waf.RestrictExtensionTest)  Time elapsed: 0.016 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
@@ -240,7 +240,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
 	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
 
-testBadMethod(org.owasp.esapi.waf.RestrictMethodTest)  Time elapsed: 0.041 sec  <<< ERROR!
+testBadMethod(org.owasp.esapi.waf.RestrictMethodTest)  Time elapsed: 0.015 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
@@ -274,7 +274,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.SurefireBooter.runSuitesInProcess(SurefireBooter.java:338)
 	at org.apache.maven.surefire.booter.SurefireBooter.main(SurefireBooter.java:997)
 
-testAttackAfterVirtualPatch(org.owasp.esapi.waf.VirtualPatchTest)  Time elapsed: 0.092 sec  <<< ERROR!
+testAttackAfterVirtualPatch(org.owasp.esapi.waf.VirtualPatchTest)  Time elapsed: 0.016 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:331)

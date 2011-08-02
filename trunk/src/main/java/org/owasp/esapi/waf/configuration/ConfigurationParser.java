@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
+import javax.jws.WebParam.Mode;
+
 import nu.xom.Builder;
 import nu.xom.Document;
 import nu.xom.Element;
@@ -37,6 +39,7 @@ import org.owasp.esapi.waf.actions.BlockAction;
 import org.owasp.esapi.waf.actions.DefaultAction;
 import org.owasp.esapi.waf.actions.DoNothingAction;
 import org.owasp.esapi.waf.actions.RedirectAction;
+import org.owasp.esapi.waf.configuration.ModSecRuleParser.BodyAccessEnum;
 import org.owasp.esapi.waf.rules.AddHTTPOnlyFlagRule;
 import org.owasp.esapi.waf.rules.AddHeaderRule;
 import org.owasp.esapi.waf.rules.AddSecureFlagRule;
@@ -46,6 +49,7 @@ import org.owasp.esapi.waf.rules.DetectOutboundContentRule;
 import org.owasp.esapi.waf.rules.EnforceHTTPSRule;
 import org.owasp.esapi.waf.rules.HTTPMethodRule;
 import org.owasp.esapi.waf.rules.IPRule;
+import org.owasp.esapi.waf.rules.ModSecurityRule;
 import org.owasp.esapi.waf.rules.MustMatchRule;
 import org.owasp.esapi.waf.rules.PathExtensionRule;
 import org.owasp.esapi.waf.rules.ReplaceContentRule;
@@ -101,7 +105,7 @@ public class ConfigurationParser {
 			Element virtualPatchesRoot = root.getFirstChildElement("virtual-patches");
 			Element outboundRoot = root.getFirstChildElement("outbound-rules");
 			Element beanShellRoot = root.getFirstChildElement("bean-shell-rules");
-			
+			Element modSecurityRoot = root.getFirstChildElement("mod_security-rules");
 			
 			/**
 			 * Parse the 'aliases' section.
@@ -151,6 +155,12 @@ public class ConfigurationParser {
 					logger.log(Level.WARN, "ESAPI WAF is working in log mode due to missing or non understandable mode setting");
 					AppGuardianConfiguration.DEFAULT_FAIL_ACTION = AppGuardianConfiguration.LOG;
 				}
+				
+				String processRequest = settingsRoot.getFirstChildElement("process-request-body").getValue();
+				config.setRequestBodyAccess(processRequest.toLowerCase().equals("true"));
+
+				String processResponse = settingsRoot.getFirstChildElement("process-response-body").getValue();
+				config.setResponseBodyAccess(processResponse.toLowerCase().equals("true"));
 	
 				Element errorHandlingRoot = settingsRoot.getFirstChildElement("error-handling");
 				
@@ -642,7 +652,55 @@ public class ConfigurationParser {
 					
 				}
 			}
-
+			
+			/**
+			 * Parse the 'mod-security-rules' section.
+			 */
+			
+			if ( modSecurityRoot != null ) {
+				Elements ruleNodes = authZRoot.getChildElements("mod-security-rule");
+				for(int i=0;i<ruleNodes.size();i++) {
+					Element e = ruleNodes.get(i);
+					String id = e.getAttributeValue("id");
+					ModSecurityRule msr = new ModSecurityRule(id, e.getValue());
+					int phase = msr.getPhase();
+					if ( phase == 1) {
+						config.addBeforeBodyRule(msr);
+					} else if (phase == 2) {
+						config.addAfterBodyRule(msr);
+					} else if (phase == 3 || phase == 4) {  //Phase 3, 4 Before headers and body is sent to user
+						config.addBeforeResponseRule(msr);
+					} else {
+						throw new ConfigurationException ("Mod Security Rule '" + id + "' does not specifies a phase to apply it");
+					}
+				}
+				
+				ruleNodes = authZRoot.getChildElements("rules-file");
+				for(int i=0;i<ruleNodes.size();i++) {
+					Element e = ruleNodes.get(i);
+					ModSecRuleParser msrp = new ModSecRuleParser();
+					//Add parse file and add rules to configuration object
+					msrp.addRulesToConfig(e.getAttributeValue("filepath"), config);
+					if (e.getAttributeValue("mod-security-overide-globals").toLowerCase() == "true") {
+						//Change WAF mode are per Mod Security settings
+						if ( msrp.getSecRuleEngine() == ModSecRuleParser.RuleEngineEnum.Off ) {
+							//TODO: This mode is not supported
+						} else if ( msrp.getSecRuleEngine() == ModSecRuleParser.RuleEngineEnum.On ){
+							//TODO: This mode is not supported, WAF is always on
+						} else if ( msrp.getSecRuleEngine() == ModSecRuleParser.RuleEngineEnum.DetectionOnly ){
+							AppGuardianConfiguration.DEFAULT_FAIL_ACTION = AppGuardianConfiguration.LOG;
+							logger.log(Level.WARN, "ESAPI WAF is working in log mode due to Mod Security SecRuleEngine directive override, disable mod-security-overide-globals to prevent this");
+						} else {
+							AppGuardianConfiguration.DEFAULT_FAIL_ACTION = AppGuardianConfiguration.LOG;
+							logger.log(Level.WARN, "ESAPI WAF is working in log mode due to missing or non understandable mode setting");
+						}
+						//Change process request body as per Mod Security settings
+						config.setRequestBodyAccess(msrp.getSecRequestBodyAccess() == BodyAccessEnum.On);
+						//Change process response body as per Mod Security settings
+						config.setResponseBodyAccess(msrp.getSecResponseBodyAccess() == BodyAccessEnum.On);
+					}
+				}
+			}
 
 		} catch (ValidityException e) {
 			throw new ConfigurationException(e);

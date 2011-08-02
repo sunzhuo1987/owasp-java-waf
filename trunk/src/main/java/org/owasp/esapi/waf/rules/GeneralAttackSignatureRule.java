@@ -52,9 +52,12 @@ public class GeneralAttackSignatureRule extends Rule {
 
 		while(e.hasMoreElements()) {
 			String param = (String)e.nextElement();
-			if ( signature.matcher(request.getDictionaryParameter(param)).matches() ) {
-				log(request,"General attack signature detected in parameter '" + param + "' value '" + request.getDictionaryParameter(param) + "'");
-				return this.ruleDefaultAction;
+			String[] values = request.ARGS.get(param);
+			for (int i=0; i<values.length; i++) {
+				if ( signature.matcher(values[i]).matches() ) {
+					log(request,"General attack signature detected in parameter '" + param + "' value '" + request.ARGS.get(param) + "'");
+					return this.ruleDefaultAction;
+				}
 			}
 		}
 

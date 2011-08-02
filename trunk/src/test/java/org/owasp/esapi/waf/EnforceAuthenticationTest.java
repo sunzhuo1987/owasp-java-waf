@@ -38,7 +38,7 @@ public class EnforceAuthenticationTest extends WAFTestCase {
 	    request.getSession().setAttribute("ESAPIUserSessionKey", user);
 		response = new MockHttpServletResponse();
 		createAndExecuteWAFResponseCodeTest( waf, request, response, HttpServletResponse.SC_OK );		
-	}
+	} 
 
 	public void testUnauthenticatedRequest() throws Exception {
 	    // authentication test

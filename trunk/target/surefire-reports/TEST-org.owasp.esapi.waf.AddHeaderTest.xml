@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite failures="0" time="0.055" errors="0" skipped="0" tests="2" name="org.owasp.esapi.waf.AddHeaderTest">
+<testsuite failures="0" time="0.032" errors="0" skipped="0" tests="2" name="org.owasp.esapi.waf.AddHeaderTest">
   <properties>
     <property name="java.vendor" value="Sun Microsystems Inc."/>
     <property name="env.SYSTEMROOT" value="C:\Windows"/>
@@ -18,14 +18,14 @@
     <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."/>
     <property name="java.runtime.version" value="1.6.0_24-b07"/>
     <property name="env.HOMEPATH" value="\Users\Juan Carlos"/>
-    <property name="env.__COMPAT_LAYER" value="ElevateCreateProcess "/>
+    <property name="env.__COMPAT_LAYER" value="ElevateCreateProcess ElevateCreateProcess ElevateCreateProcess ElevateCreateProcess ElevateCreateProcess ElevateCreateProcess "/>
     <property name="user.name" value="Juan Carlos"/>
     <property name="env.QTJAVA" value="C:\Program Files\Java\jre6\lib\ext\QTJava.zip"/>
-    <property name="env.PATH" value="C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin/client;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Common Files\Roxio Shared\DLLShared\;C:\Program Files\Common Files\Roxio Shared\10.0\DLLShared\;C:\Program Files\ZipGenius 6\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\PHP;C:\Program Files\flex_sdk_3\bin;C:\cygwin\bin\;C:\Program Files\Common Files\DivX Shared\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Windows Live\Shared;C:\Program Files\GtkSharp\2.12\bin;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\Java\jdk1.6.0_13\bin"/>
+    <property name="env.PATH" value="C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin/client;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/lib/i386;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Common Files\Roxio Shared\DLLShared\;C:\Program Files\Common Files\Roxio Shared\10.0\DLLShared\;C:\Program Files\ZipGenius 6\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\PHP;C:\Program Files\flex_sdk_3\bin;C:\cygwin\bin\;C:\Program Files\Common Files\DivX Shared\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Windows Live\Shared;C:\Program Files\GtkSharp\2.12\bin;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\Java\jdk1.6.0_13\bin;C:\Program Files\eclipse;"/>
     <property name="user.language" value="es"/>
     <property name="env.WINDIR" value="C:\Windows"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jre6\bin"/>
-    <property name="classworlds.conf" value="C:\Users\Juan Carlos\workspace\.metadata\.plugins\org.maven.ide.eclipse\launches\m2conf9010065237079187278.tmp"/>
+    <property name="classworlds.conf" value="C:\Users\Juan Carlos\workspace\.metadata\.plugins\org.maven.ide.eclipse\launches\m2conf978303060186826735.tmp"/>
     <property name="java.version" value="1.6.0_24"/>
     <property name="env.PROCESSOR_IDENTIFIER" value="x86 Family 6 Model 15 Stepping 13, GenuineIntel"/>
     <property name="user.timezone" value="America/Mexico_City"/>
@@ -48,7 +48,6 @@
     <property name="java.vm.info" value="mixed mode, sharing"/>
     <property name="env.OS" value="Windows_NT"/>
     <property name="os.version" value="6.0"/>
-    <property name="env.=::" value="::\"/>
     <property name="path.separator" value=";"/>
     <property name="java.vm.version" value="19.1-b02"/>
     <property name="env.ASL.LOG" value="Destination=file;OnFirstLog=command,environment"/>
@@ -67,12 +66,12 @@
     <property name="env.CLASSPATH" value=".;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\zeus.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\gnu-regexp.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\icu4j.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\sl.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\jaxb-rt-1.0-ea.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\jaxb-xjc-1.0-ea.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\xerces.jar;C:\Users\Juan Carlos\Desktop\ITESM\AI\08\lib\jade.jar;C:\Program Files\Java\jre6\lib\ext\QTJava.zip"/>
     <property name="env.VS80COMNTOOLS" value="C:\Program Files\Microsoft Visual Studio 8\Common7\Tools\"/>
     <property name="env.NUMBER_OF_PROCESSORS" value="2"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jre6\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin/client;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Common Files\Roxio Shared\DLLShared\;C:\Program Files\Common Files\Roxio Shared\10.0\DLLShared\;C:\Program Files\ZipGenius 6\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\PHP;C:\Program Files\flex_sdk_3\bin;C:\cygwin\bin\;C:\Program Files\Common Files\DivX Shared\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Windows Live\Shared;C:\Program Files\GtkSharp\2.12\bin;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\Java\jdk1.6.0_13\bin"/>
+    <property name="java.library.path" value="C:\Program Files\Java\jre6\bin;.;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin/client;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/bin;C:/Program Files/Java/jdk1.6.0_13/bin/../jre/lib/i386;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Program Files\Common Files\Roxio Shared\DLLShared\;C:\Program Files\Common Files\Roxio Shared\10.0\DLLShared\;C:\Program Files\ZipGenius 6\;C:\Program Files\TortoiseSVN\bin;C:\Program Files\PHP;C:\Program Files\flex_sdk_3\bin;C:\cygwin\bin\;C:\Program Files\Common Files\DivX Shared\;c:\Program Files\Microsoft SQL Server\100\Tools\Binn\;c:\Program Files\Microsoft SQL Server\100\DTS\Binn\;C:\Program Files\Windows Live\Shared;C:\Program Files\GtkSharp\2.12\bin;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\Java\jdk1.6.0_13\bin;C:\Program Files\eclipse;"/>
     <property name="java.vendor.url" value="http://java.sun.com/"/>
     <property name="env.PSMODULEPATH" value="C:\Windows\system32\WindowsPowerShell\v1.0\Modules\"/>
     <property name="java.vm.vendor" value="Sun Microsystems Inc."/>
-    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="maven.home" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\EMBEDDED"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.class.path" value="/C:/Program Files/eclipse/plugins/org.maven.ide.eclipse.maven_embedder_0.12.1.20110112-1712/jars/plexus-classworlds-2.4.jar"/>
     <property name="env.DFSTRACINGON" value="FALSE"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
@@ -95,7 +94,7 @@
     <property name="env.LOCALAPPDATA" value="C:\Users\Juan Carlos\AppData\Local"/>
     <property name="line.separator" value="
 "/>
-    <property name="org.owasp.esapi.resources" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\.esapi"/>
+    <property name="org.owasp.esapi.resources" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF\target\test-classes\esapi"/>
     <property name="java.vm.name" value="Java HotSpot(TM) Client VM"/>
     <property name="env.PATHEXT" value=".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC"/>
     <property name="basedir" value="C:\Users\Juan Carlos\Desktop\OWASP\WAF\MyWAF"/>
@@ -105,6 +104,6 @@
     <property name="java.specification.version" value="1.6"/>
     <property name="env.PROCESSOR_LEVEL" value="6"/>
   </properties>
-  <testcase time="0.024" classname="org.owasp.esapi.waf.AddHeaderTest" name="testShouldAddHeader"/>
-  <testcase time="0.028" classname="org.owasp.esapi.waf.AddHeaderTest" name="testShouldNotAddHeader"/>
+  <testcase time="0.016" classname="org.owasp.esapi.waf.AddHeaderTest" name="testShouldAddHeader"/>
+  <testcase time="0.016" classname="org.owasp.esapi.waf.AddHeaderTest" name="testShouldNotAddHeader"/>
 </testsuite>

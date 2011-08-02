@@ -108,6 +108,8 @@ public class AppGuardianConfiguration {
 	private List<Rule> afterBodyRules;
 	private List<Rule> beforeResponseRules;
 	private List<Rule> cookieRules;
+	private boolean isResponseBodyAccess = true;
+	private boolean isRequestBodyAccess = true;
 
 	public AppGuardianConfiguration() {
 		beforeBodyRules = new ArrayList<Rule>();
@@ -197,5 +199,21 @@ public class AppGuardianConfiguration {
 		sb.append( "Cookie rules:\n" );
 		for ( Rule rule : cookieRules ) sb.append( "  " + rule.toString() + "\n" );
 		return sb.toString();
+	}
+
+	public boolean getRequestBodyAccess() {
+		return isRequestBodyAccess;
+	}
+	
+	public void setRequestBodyAccess(boolean value) {
+		isRequestBodyAccess = value;
+	}
+	
+	public boolean getResponseBodyAccess() {
+		return isResponseBodyAccess;
+	}
+
+	public void setResponseBodyAccess(boolean value) {
+		isResponseBodyAccess = value;
 	}
 }

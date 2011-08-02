@@ -1,8 +1,8 @@
 -------------------------------------------------------------------------------
 Test set: org.owasp.esapi.waf.RestrictMethodTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.092 sec <<< FAILURE!
-testBadMethod(org.owasp.esapi.waf.RestrictMethodTest)  Time elapsed: 0.035 sec  <<< ERROR!
+Tests run: 2, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.063 sec <<< FAILURE!
+testBadMethod(org.owasp.esapi.waf.RestrictMethodTest)  Time elapsed: 0.015 sec  <<< ERROR!
 java.lang.NullPointerException
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.sendRedirect(ESAPIWebApplicationFirewallFilter.java:417)
 	at org.owasp.esapi.waf.ESAPIWebApplicationFirewallFilter.doFilter(ESAPIWebApplicationFirewallFilter.java:267)
